@@ -1,8 +1,8 @@
-package classes;
+package classes.control;
 
 import classes.config.CNodeID;
-import classes.tablemodel.TableNPV;
-import classes.tablemodel.TablePBP;
+import classes.tablemodel.RowNPV;
+import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
@@ -36,7 +36,7 @@ public class SetData {
      *
      */
     public void payBackPeriodClear(Scene scene){
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         table.getItems().clear();
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
@@ -51,12 +51,12 @@ public class SetData {
      * Initialize the Pay Back Period Inflows and Outflows with 0.
      */
     public void setPBPTable(Scene scene){
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();
         int size = rows.size();
 
         for (int i=0; i<size; i++){
-            TablePBP row = rows.get(i);
+            RowPBP row = rows.get(i);
             row.setInflows("0");
             row.setOutflows("0");
         }
@@ -69,19 +69,19 @@ public class SetData {
      *
      */
     public void setCumulativeCashFlow(Scene scene, ArrayList<Float> cashFlow){
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();
         int size = rows.size();
 
         for (int i=0; i<size; i++){
-            TablePBP row = rows.get(i);
+            RowPBP row = rows.get(i);
             if(cashFlow.get(i) > 0);//TODO Add change color function
             row.setCumulativeCashFlow(""+ cashFlow.get(i));
         }
     }
 
     public void netPresentValueClear(Scene scene){
-        TableView<TableNPV> table = (TableView<TableNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
         table.getItems().clear();
 
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);

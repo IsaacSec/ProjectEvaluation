@@ -1,4 +1,4 @@
 package classes.screening;
 
-public class Utilities {
+public class PBPResult {
 }

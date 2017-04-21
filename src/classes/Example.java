@@ -4,7 +4,7 @@ import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
 import classes.control.ButtonSupport;
-import classes.tablemodel.TablePBP;
+import classes.tablemodel.RowPBP;
 import classes.control.TableSupport;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -54,12 +54,12 @@ public class Example extends Application{
     }
 
     public static void calculate(Scene scene){
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();
         int size = rows.size();
 
         for (int i=0; i<size; i++){
-            TablePBP row = rows.get(i);
+            RowPBP row = rows.get(i);
             float inflow = Float.parseFloat(row.getInflows().getText());
             float outflow = Float.parseFloat(row.getOutflows().getText());
             row.setCumulativeCashFlow(""+(inflow-outflow));
@@ -68,8 +68,8 @@ public class Example extends Application{
     }
 
     public static void clear(Scene scene){
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();
         rows.clear();
     }
 

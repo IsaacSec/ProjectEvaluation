@@ -66,7 +66,7 @@ public class NPVEvaluation {
     // Calculate CumulativeCashflow Values
     ArrayList<Float> cumulativeCashflowValues = cumCash(netPresValuePeriod, periods);
 
-    // Calculate NetPresentValue
+    // Calculate NPVInput
     float npv = calcNPV(periods, principal, cumulativeCashflowValues);
 
     npvR.setNetCashFlowValues(netCashflowValues);

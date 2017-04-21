@@ -3,18 +3,18 @@ package classes.tablemodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TextField;
 
-public class TableNPV {
+public class RowNPV {
     private final SimpleStringProperty period;
     private TextField outflows;
     private TextField inflows;
     private final SimpleStringProperty netCashFlow;
     private final SimpleStringProperty cumulativeCashFlow;
 
-    public TableNPV(String period,
-                    String outflows,
-                    String inflows,
-                    String netCashFlow,
-                    String cumulativeCashFlow) {
+    public RowNPV(String period,
+                  String outflows,
+                  String inflows,
+                  String netCashFlow,
+                  String cumulativeCashFlow) {
 
         this.period = new SimpleStringProperty(period);
         this.outflows = new TextField(outflows);

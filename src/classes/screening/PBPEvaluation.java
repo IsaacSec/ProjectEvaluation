@@ -1,5 +1,7 @@
 package classes.screening;
 
+import classes.control.PBPInput;
+
 import java.util.ArrayList;
 
 import static java.lang.StrictMath.abs;
@@ -7,9 +9,9 @@ import static java.lang.StrictMath.abs;
 /**
  * Created by erikm on 18/04/2017.
  */
-public class EvaluationMethods {
+public class PBPEvaluation {
 
-    public  ArrayList<Float> calculatePBP(PayBackPeriod pbp, ArrayList<Float> outflow, ArrayList<Float> inflow) {
+    public  ArrayList<Float> calculatePBP(PBPInput pbp, ArrayList<Float> outflow, ArrayList<Float> inflow) {
         ArrayList<Float> comulativeCashFlow = new ArrayList<>();
         float add = - pbp.getPrincipal() - outflow.get(0) + inflow.get(0);                                       //Initialize the add with the principal
         comulativeCashFlow.add(add);

@@ -2,7 +2,7 @@ package classes.tablemodel;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class TableDEP {
+public class RowDEP {
     private final SimpleStringProperty period;
     private final SimpleStringProperty years;
     private final SimpleStringProperty depreciationRate;
@@ -12,13 +12,13 @@ public class TableDEP {
     private final SimpleStringProperty taxPerYear;
 
 
-    public TableDEP(String period,
-                    String years,
-                    String depRate,
-                    String annualDep,
-                    String accDep,
-                    String ledgers,
-                    String taxYear){
+    public RowDEP(String period,
+                  String years,
+                  String depRate,
+                  String annualDep,
+                  String accDep,
+                  String ledgers,
+                  String taxYear){
 
         this.period = new SimpleStringProperty(period);
         this.years = new SimpleStringProperty(years);

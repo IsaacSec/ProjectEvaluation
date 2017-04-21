@@ -1,17 +1,14 @@
-package classes;
+package classes.control;
 
 import classes.config.CNodeID;
-import classes.screening.NetPresentValue;
-import classes.screening.PayBackPeriod;
-import classes.tablemodel.TableNPV;
-import classes.tablemodel.TablePBP;
+import classes.tablemodel.RowNPV;
+import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -23,17 +20,17 @@ public class GetData {
      * Get the values of the period, principal and interest
      * @param scene The current scene of Javafx
      * @return
-     * Return a PayBackPeriod contaeining the data of the text fields
+     * Return a PBPInput contaeining the data of the text fields
      */
-    public PayBackPeriod payBackPeriod(Scene scene){
-        PayBackPeriod pbp;
+    public PBPInput payBackPeriod(Scene scene){
+        PBPInput pbp;
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
         TextField interest = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_INTEREST_RATE);
         if(!periods.getText().isEmpty()&& !principal.getText().isEmpty()) {
             if(interest.getText().isEmpty())interest.setText("0");
             try {
-                pbp = new PayBackPeriod(Integer.parseInt(periods.getText()), Integer.parseInt(principal.getText()), Integer.parseInt(interest.getText()));
+                pbp = new PBPInput(Integer.parseInt(periods.getText()), Integer.parseInt(principal.getText()), Integer.parseInt(interest.getText()));
             }catch (NumberFormatException nfe){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -61,7 +58,7 @@ public class GetData {
         return pbp;
     }
 
-    public NetPresentValue netPresentValue(Scene scene){
+    public NPVInput netPresentValue(Scene scene){
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
         TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PRINCIPAL);
         TextField interest = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_INTEREST_RATE);
@@ -77,7 +74,7 @@ public class GetData {
         int salvp = Integer.parseInt(salvagePeriod.getText());
 
 
-        NetPresentValue npv = new NetPresentValue(per,pri,inte,taxes,salv,salvp);
+        NPVInput npv = new NPVInput(per,pri,inte,taxes,salv,salvp);
 
 
         return npv;
@@ -92,12 +89,12 @@ public class GetData {
 
     public ArrayList<Float>getOutflows(Scene scene){
         ArrayList<Float> outflows = new ArrayList<>();
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();                           //Get all the items in the table.
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();                           //Get all the items in the table.
         int size = rows.size();
         try {                                                                       //Validate that all outflows are integers.
             for (int i = 0; i < size ; i++) {
-                TablePBP row = rows.get(i);
+                RowPBP row = rows.get(i);
                 float outflow = Math.abs(Float.parseFloat(row.getOutflows().getText()));      //Make all outflows positives
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
@@ -120,12 +117,12 @@ public class GetData {
      */
     public ArrayList<Float>getInflows(Scene scene){
         ArrayList<Float> inflows = new ArrayList<>();
-        TableView<TablePBP> table = (TableView<TablePBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<TablePBP> rows = table.getItems();                       //Get all the items in the table.
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();                       //Get all the items in the table.
         int size = rows.size();
         try {                                                                   //Validate that all inflows are integers.
             for (int i = 0; i < size; i++) {
-                TablePBP row = rows.get(i);
+                RowPBP row = rows.get(i);
                 float inflow = Math.abs(Float.parseFloat(row.getInflows().getText()));    //Make all inflows positives
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }
@@ -148,12 +145,12 @@ public class GetData {
 
     public ArrayList<Float>getNPVOutflows(Scene scene){
         ArrayList<Float> outflows = new ArrayList<>();
-        TableView<TableNPV> table = (TableView<TableNPV>) scene.lookup(CNodeID.TABLE_NPV);
-        ObservableList<TableNPV> rows = table.getItems();                           //Get all the items in the table.
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();                           //Get all the items in the table.
         int size = rows.size();
         try {                                                                       //Validate that all outflows are integers.
             for (int i = 0; i < size ; i++) {
-                TableNPV row = rows.get(i);
+                RowNPV row = rows.get(i);
                 float outflow = Math.abs(Float.parseFloat(row.getOutflows().getText()));      //Make all outflows positives
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
@@ -176,12 +173,12 @@ public class GetData {
      */
     public ArrayList<Float>getNPVInflows(Scene scene){
         ArrayList<Float> inflows = new ArrayList<>();
-        TableView<TableNPV> table = (TableView<TableNPV>) scene.lookup(CNodeID.TABLE_NPV);
-        ObservableList<TableNPV> rows = table.getItems();                       //Get all the items in the table.
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();                       //Get all the items in the table.
         int size = rows.size();
         try {                                                                   //Validate that all inflows are integers.
             for (int i = 0; i < size; i++) {
-                TableNPV row = rows.get(i);
+                RowNPV row = rows.get(i);
                 float inflow = Math.abs(Float.parseFloat(row.getInflows().getText()));    //Make all inflows positives
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }

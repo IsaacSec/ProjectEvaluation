@@ -1,14 +1,14 @@
-package classes.screening;
+package classes.control;
 
 /**
  * Created by erikm on 18/04/2017.
  */
-public class PayBackPeriod {
+public class PBPInput {
     private int periods;
     private int principal;
     private int interest;
 
-    public PayBackPeriod(int periods, int principal, int interest) {
+    public PBPInput(int periods, int principal, int interest) {
         this.periods = periods;
         this.principal = principal;
         this.interest = interest;

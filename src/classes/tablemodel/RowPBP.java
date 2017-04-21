@@ -3,16 +3,16 @@ package classes.tablemodel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.TextField;
 
-public final class TablePBP {
+public final class RowPBP {
     private final SimpleStringProperty period;
     private TextField inflows;
     private TextField outflows;
     private final SimpleStringProperty cumulativeCashFlow;
 
-    public TablePBP(String period,
-                    String inflows,
-                    String outflows,
-                    String cumulativeCashFlow)
+    public RowPBP(String period,
+                  String inflows,
+                  String outflows,
+                  String cumulativeCashFlow)
     {
         this.period = new SimpleStringProperty(period);
         this.inflows = new TextField(inflows);

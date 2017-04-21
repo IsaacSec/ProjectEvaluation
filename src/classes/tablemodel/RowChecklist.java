@@ -2,14 +2,14 @@ package classes.tablemodel;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class TableChecklist {
+public class RowChecklist {
     private SimpleStringProperty topic;
     private SimpleStringProperty question;
     private SimpleStringProperty answer;
 
-    public TableChecklist(String topic,
-                          String question,
-                          String answer) {
+    public RowChecklist(String topic,
+                        String question,
+                        String answer) {
         this.topic = new SimpleStringProperty(topic);
         this.question = new SimpleStringProperty(question);
         this.answer = new SimpleStringProperty(answer);

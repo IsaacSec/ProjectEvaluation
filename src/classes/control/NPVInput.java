@@ -1,9 +1,9 @@
-package classes.screening;
+package classes.control;
 
 /**
  * Created by erikm on 18/04/2017.
  */
-public class NetPresentValue {
+public class NPVInput {
     private int periods;
     private float principal;
     private float interest;
@@ -11,7 +11,7 @@ public class NetPresentValue {
     private float salvage;
     private int salvagePeriod;
 
-    public NetPresentValue(int periods, float principal, float interest, float tax, float salvage, int salvagePeriod) {
+    public NPVInput(int periods, float principal, float interest, float tax, float salvage, int salvagePeriod) {
         this.periods = periods;
         this.principal = principal;
         this.interest = interest;
