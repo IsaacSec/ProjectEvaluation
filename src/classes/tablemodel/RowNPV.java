@@ -5,8 +5,8 @@ import javafx.scene.control.TextField;
 
 public class RowNPV {
     private final SimpleStringProperty period;
-    private TextField outflows;
-    private TextField inflows;
+    private TextField outflow;
+    private TextField inflow;
     private final SimpleStringProperty netCashFlow;
     private final SimpleStringProperty cumulativeCashFlow;
 
@@ -17,8 +17,8 @@ public class RowNPV {
                   String cumulativeCashFlow) {
 
         this.period = new SimpleStringProperty(period);
-        this.outflows = new TextField(outflows);
-        this.inflows = new TextField(inflows);
+        this.outflow = new TextField(outflows);
+        this.inflow = new TextField(inflows);
         this.netCashFlow = new SimpleStringProperty(netCashFlow);
         this.cumulativeCashFlow = new SimpleStringProperty(cumulativeCashFlow);
 
@@ -36,20 +36,28 @@ public class RowNPV {
         this.period.set(period);
     }
 
-    public TextField getOutflows() {
-        return outflows;
+    public TextField getOutflow() {
+        return outflow;
     }
 
-    public TextField getInflows() {
-        return inflows;
+    public TextField getInflow() {
+        return inflow;
     }
 
-    public void setInflows(TextField inflows){
-        this.inflows = inflows;
+    public void setInflow(TextField inflow){
+        this.inflow = inflow;
     }
 
-    public void setOutflows(TextField outflows) {
-        this.outflows = outflows;
+    public void setInflow(String inflow){
+        this.inflow.setText(inflow);
+    }
+
+    public void setOutflow(TextField outflow) {
+        this.outflow = outflow;
+    }
+
+    public void setOutflow(String outflow) {
+        this.outflow.setText(outflow);
     }
 
     public String getNetCashFlow() {

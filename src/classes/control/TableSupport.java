@@ -25,13 +25,9 @@ public class TableSupport {
         TableColumn cumulative = table.getColumns().get(3);
 
         period.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("period"));
-        inflows.setCellValueFactory(new PropertyValueFactory<RowPBP, TextField>("inflows"));
-        outflows.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("outflows"));
+        inflows.setCellValueFactory(new PropertyValueFactory<RowPBP, TextField>("inflow"));
+        outflows.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("outflow"));
         cumulative.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("cumulativeCashFlow"));
-
-
-        //inflows.setCellFactory(TextFieldTableCell.forTableColumn());
-        //outflows.setCellFactory(TextFieldTableCell.forTableColumn());
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         tf.setOnAction(e -> displayPBPRows(scene, table));
@@ -51,6 +47,8 @@ public class TableSupport {
         for(int i=data.size(); i<=periods; i++){
             data.add(new RowPBP(""+i,"","",""));
         }
+
+        SetData.initPBPTableValues(scene);
     }
 
     public static void initTableNPV(Scene scene){
@@ -63,8 +61,8 @@ public class TableSupport {
         TableColumn cumulative = table.getColumns().get(4);
 
         period.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("period"));
-        outflows.setCellValueFactory(new PropertyValueFactory<RowNPV, TextField>("outflows"));
-        inflows.setCellValueFactory(new PropertyValueFactory<RowNPV, TextField>("inflows"));
+        outflows.setCellValueFactory(new PropertyValueFactory<RowNPV, TextField>("outflow"));
+        inflows.setCellValueFactory(new PropertyValueFactory<RowNPV, TextField>("inflow"));
         netCash.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("netCashFlow"));
         cumulative.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("cumulativeCashFlow"));
 
@@ -89,6 +87,8 @@ public class TableSupport {
         for(int i=data.size(); i<periods; i++){
             data.add(new RowNPV(""+(i+1),"","","",""));
         }
+
+        SetData.initNPVTableValues(scene);
     }
 
     public static void initTableDEP(Scene scene){

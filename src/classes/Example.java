@@ -60,8 +60,8 @@ public class Example extends Application{
 
         for (int i=0; i<size; i++){
             RowPBP row = rows.get(i);
-            float inflow = Float.parseFloat(row.getInflows().getText());
-            float outflow = Float.parseFloat(row.getOutflows().getText());
+            float inflow = Float.parseFloat(row.getInflow().getText());
+            float outflow = Float.parseFloat(row.getOutflow().getText());
             row.setCumulativeCashFlow(""+(inflow-outflow));
         }
 

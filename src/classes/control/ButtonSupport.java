@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
+import static classes.control.SetData.*;
+import static classes.control.GetData.*;
+
 public class ButtonSupport {
     public static void initPBPButtons(Scene scene){
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_PBP_CALCULATE);
@@ -21,18 +24,14 @@ public class ButtonSupport {
     }
 
     private static void calculatePBP(Scene scene){
-        GetData getData = new GetData();
-        SetData setData = new SetData();
-        PBPEvaluation eval = new PBPEvaluation();
+        InputPBP inputPBP = getPayBackPeriodInput(scene);
+        PBPResult pbpResult = PBPEvaluation.calculatePBP(inputPBP, getPBPOutflows(scene), getPBPInflows(scene));
 
-        PBPInput pbp = getData.payBackPeriod(scene);
-        ArrayList<Float> cumulative = eval.calculatePBP(pbp,getData.getOutflows(scene),getData.getInflows(scene));
-        setData.setCumulativeCashFlow(scene,cumulative);
+        setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
     }
 
     private  static void clearPBP(Scene scene){
-        SetData setData = new SetData();
-        setData.payBackPeriodClear(scene);
+        clearPayBackPeriod(scene);
     }
 
     public static void initNPVButtons(Scene scene){
@@ -44,30 +43,17 @@ public class ButtonSupport {
     }
 
     private static void calculateNPV(Scene scene){
-        GetData getData = new GetData();
-        SetData setData = new SetData();
-        NPVEvaluation npvEval = new NPVEvaluation();
-        NPVInput npv = getData.netPresentValue(scene);
-        NPVResult result = npvEval.calculateNPV(npv.getPeriods(), npv.getPrincipal(), npv.getInterest(), npv.getTax(),npv.getSalvage(),npv.getSalvagePeriod(),
-                                                getData.getNPVInflows(scene),getData.getNPVOutflows(scene));
-        //This will be move to SetData class
-        TextField tfNPV = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_RESULT);
-        tfNPV.setText(""+result.getNetPresentValue());
+        InputNPV input = getNetPresentValueInput(scene);
 
-        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
-        ObservableList<RowNPV> rows = table.getItems();
-        ArrayList<Float> cumulative = result.getCumulativeCashFlowValues();
-        ArrayList<Float> netcash = result.getNetCashFlowValues();
+        // TODO: Validate that the periodSalvage does not surpass the highest period
 
-        for (int i=0; i<rows.size(); i++){
-            RowNPV row = rows.get(i);
-            row.setCumulativeCashFlow(""+cumulative.get(i));
-            row.setNetCashFlow(""+netcash.get(i));
-        }
+        NPVResult result = NPVEvaluation.calculateNPV(input, getNPVInflows(scene),getNPVOutflows(scene));
+
+        setNPVCumulativeCashFlow(scene, result.getCumulativeCashFlowValues());
+        setNPVNetCashFlow(scene, result.getNetCashFlowValues());
     }
 
     private static void clearNPV(Scene scene){
-        SetData setData = new SetData();
-        setData.netPresentValueClear(scene);
+        clearNetPresentValue(scene);
     }
 }

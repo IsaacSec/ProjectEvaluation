@@ -22,25 +22,51 @@ public class SetData {
      * @param principal The principal of the Pay Back Period
      * @param interest The interest of the Pay Back Period
      */
-    public void payBackPeriod(Scene scene, String period,String principal, String interest){
+    public static void setPayBackPeriod(Scene scene, String period,String principal, String interest){
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
         TextField interestTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_INTEREST_RATE);
+
         periods.setText(period);
         principalTF.setText(principal);
         interestTF.setText(interest);
+    }
+
+    public static void setNetPresentValue(Scene scene, String periods, String principal, String interest,
+                                          String tax, String salvage, String salvagePeriod){
+        TextField periodsTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
+        TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PRINCIPAL);
+        TextField interestTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_INTEREST_RATE);
+        TextField taxTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_TAX_RATE);
+        TextField salvageTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_SALVAGE_VALUE);
+        TextField periodSVTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIOD_SV);
+
+        periodsTF.setText(periods);
+        principalTF.setText(principal);
+        interestTF.setText(interest);
+        taxTF.setText(tax);
+        salvageTF.setText(salvage);
+        periodSVTF.setText(salvagePeriod);
+    }
+
+    public static void setCalculatedNetPresentValue(Scene scene, float calculatedNPV){
+        //This will be move to SetData class
+        TextField tfNPV = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_RESULT);
+        tfNPV.setText(""+calculatedNPV);
     }
 
     /**
      * Clear all the data in the Pay Back Period Tab
      *
      */
-    public void payBackPeriodClear(Scene scene){
+    public static void clearPayBackPeriod(Scene scene){
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         table.getItems().clear();
+
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
         TextField interestTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_INTEREST_RATE);
+
         periods.setText("");
         principalTF.setText("");
         interestTF.setText("");
@@ -50,15 +76,27 @@ public class SetData {
      * @param scene The current scene of Javafx
      * Initialize the Pay Back Period Inflows and Outflows with 0.
      */
-    public void setPBPTable(Scene scene){
+    public static void initPBPTableValues(Scene scene){
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         ObservableList<RowPBP> rows = table.getItems();
         int size = rows.size();
 
         for (int i=0; i<size; i++){
             RowPBP row = rows.get(i);
-            row.setInflows("0");
-            row.setOutflows("0");
+            row.setInflow("0");
+            row.setOutflow("0");
+        }
+    }
+
+    public static void initNPVTableValues(Scene scene){
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowNPV row = rows.get(i);
+            row.setInflow("0");
+            row.setOutflow("0");
         }
     }
 
@@ -68,7 +106,7 @@ public class SetData {
      * @param cashFlow Array list of Float containing the cash flows results.
      *
      */
-    public void setCumulativeCashFlow(Scene scene, ArrayList<Float> cashFlow){
+    public static void setCumulativeCashFlow(Scene scene, ArrayList<Float> cashFlow){
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         ObservableList<RowPBP> rows = table.getItems();
         int size = rows.size();
@@ -80,7 +118,29 @@ public class SetData {
         }
     }
 
-    public void netPresentValueClear(Scene scene){
+    public static void setNPVCumulativeCashFlow(Scene scene, ArrayList<Float> cumulativeCash){
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowNPV row = rows.get(i);
+            row.setCumulativeCashFlow(""+ cumulativeCash.get(i));
+        }
+    }
+
+    public static void setNPVNetCashFlow(Scene scene, ArrayList<Float> netCash){
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowNPV row = rows.get(i);
+            row.setNetCashFlow(""+ netCash.get(i));
+        }
+    }
+
+    public static void clearNetPresentValue(Scene scene){
         TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
         table.getItems().clear();
 
@@ -100,4 +160,7 @@ public class SetData {
         periodSVTF.setText("");
         npvresultTF.setText("");
     }
+
+    // TODO: method setMissingPBPTableValues() that fills empty cells (PBP) with 0
+    // TODO: method setMissingNPVTableValues() that fills empty cells (NPV) with 0
 }

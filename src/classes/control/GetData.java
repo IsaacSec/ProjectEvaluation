@@ -20,17 +20,18 @@ public class GetData {
      * Get the values of the period, principal and interest
      * @param scene The current scene of Javafx
      * @return
-     * Return a PBPInput contaeining the data of the text fields
+     * Return a InputPBP containing the data of the text fields
      */
-    public PBPInput payBackPeriod(Scene scene){
-        PBPInput pbp;
+    public static InputPBP getPayBackPeriodInput(Scene scene){
+        InputPBP pbp;
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
         TextField interest = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_INTEREST_RATE);
+
         if(!periods.getText().isEmpty()&& !principal.getText().isEmpty()) {
             if(interest.getText().isEmpty())interest.setText("0");
             try {
-                pbp = new PBPInput(Integer.parseInt(periods.getText()), Integer.parseInt(principal.getText()), Integer.parseInt(interest.getText()));
+                pbp = new InputPBP(Integer.parseInt(periods.getText()), Integer.parseInt(principal.getText()), Integer.parseInt(interest.getText()));
             }catch (NumberFormatException nfe){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -58,7 +59,7 @@ public class GetData {
         return pbp;
     }
 
-    public NPVInput netPresentValue(Scene scene){
+    public static InputNPV getNetPresentValueInput(Scene scene){
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
         TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PRINCIPAL);
         TextField interest = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_INTEREST_RATE);
@@ -74,7 +75,7 @@ public class GetData {
         int salvp = Integer.parseInt(salvagePeriod.getText());
 
 
-        NPVInput npv = new NPVInput(per,pri,inte,taxes,salv,salvp);
+        InputNPV npv = new InputNPV(per,pri,inte,taxes,salv,salvp);
 
 
         return npv;
@@ -87,7 +88,7 @@ public class GetData {
      * Array list with all the outflows
      */
 
-    public ArrayList<Float>getOutflows(Scene scene){
+    public static ArrayList<Float> getPBPOutflows(Scene scene){
         ArrayList<Float> outflows = new ArrayList<>();
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         ObservableList<RowPBP> rows = table.getItems();                           //Get all the items in the table.
@@ -95,7 +96,7 @@ public class GetData {
         try {                                                                       //Validate that all outflows are integers.
             for (int i = 0; i < size ; i++) {
                 RowPBP row = rows.get(i);
-                float outflow = Math.abs(Float.parseFloat(row.getOutflows().getText()));      //Make all outflows positives
+                float outflow = Math.abs(Float.parseFloat(row.getOutflow().getText()));      //Make all outflows positives
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
@@ -115,7 +116,7 @@ public class GetData {
      * @return
      * Array list with all the inflows
      */
-    public ArrayList<Float>getInflows(Scene scene){
+    public static ArrayList<Float> getPBPInflows(Scene scene){
         ArrayList<Float> inflows = new ArrayList<>();
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         ObservableList<RowPBP> rows = table.getItems();                       //Get all the items in the table.
@@ -123,7 +124,7 @@ public class GetData {
         try {                                                                   //Validate that all inflows are integers.
             for (int i = 0; i < size; i++) {
                 RowPBP row = rows.get(i);
-                float inflow = Math.abs(Float.parseFloat(row.getInflows().getText()));    //Make all inflows positives
+                float inflow = Math.abs(Float.parseFloat(row.getInflow().getText()));    //Make all inflows positives
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
@@ -143,7 +144,7 @@ public class GetData {
      * Array list with all the outflows
      */
 
-    public ArrayList<Float>getNPVOutflows(Scene scene){
+    public static ArrayList<Float> getNPVOutflows(Scene scene){
         ArrayList<Float> outflows = new ArrayList<>();
         TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
         ObservableList<RowNPV> rows = table.getItems();                           //Get all the items in the table.
@@ -151,7 +152,7 @@ public class GetData {
         try {                                                                       //Validate that all outflows are integers.
             for (int i = 0; i < size ; i++) {
                 RowNPV row = rows.get(i);
-                float outflow = Math.abs(Float.parseFloat(row.getOutflows().getText()));      //Make all outflows positives
+                float outflow = Math.abs(Float.parseFloat(row.getOutflow().getText()));      //Make all outflows positives
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
@@ -171,7 +172,7 @@ public class GetData {
      * @return
      * Array list with all the inflows
      */
-    public ArrayList<Float>getNPVInflows(Scene scene){
+    public static ArrayList<Float> getNPVInflows(Scene scene){
         ArrayList<Float> inflows = new ArrayList<>();
         TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
         ObservableList<RowNPV> rows = table.getItems();                       //Get all the items in the table.
@@ -179,7 +180,7 @@ public class GetData {
         try {                                                                   //Validate that all inflows are integers.
             for (int i = 0; i < size; i++) {
                 RowNPV row = rows.get(i);
-                float inflow = Math.abs(Float.parseFloat(row.getInflows().getText()));    //Make all inflows positives
+                float inflow = Math.abs(Float.parseFloat(row.getInflow().getText()));    //Make all inflows positives
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }
         }catch (NumberFormatException nfe){

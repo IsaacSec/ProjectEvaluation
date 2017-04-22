@@ -1,12 +1,12 @@
 package classes.screening;
 
+import classes.control.InputNPV;
+
 import java.util.*;
 
 public class NPVEvaluation {
 
-  private NPVResult npvR = new NPVResult();
-
-  public ArrayList<Float> calcNetCash(ArrayList<Float> inflows, ArrayList<Float> outflows, int periods){
+  public static ArrayList<Float> calcNetCash(ArrayList<Float> inflows, ArrayList<Float> outflows, int periods){
 
     ArrayList<Float> answer = new ArrayList<Float>();
 
@@ -16,7 +16,7 @@ public class NPVEvaluation {
     return answer;
   }
 
-  public ArrayList<Float> cumCash(ArrayList<Float> netPresPeriod, int periods){
+  public static ArrayList<Float> cumCash(ArrayList<Float> netPresPeriod, int periods){
 
     ArrayList<Float> answer = new ArrayList<Float>();
 
@@ -29,7 +29,7 @@ public class NPVEvaluation {
     return answer;
   }
 
-  public ArrayList<Float> calcNetPresValuePeriod(ArrayList<Float> netcash, float interest, float tax){
+  public static ArrayList<Float> calcNetPresValuePeriod(ArrayList<Float> netcash, float interest, float tax){
 
     ArrayList<Float> answer = new ArrayList<Float>();
     int i = 1;
@@ -43,12 +43,19 @@ public class NPVEvaluation {
     return answer;
   }
 
-  public float calcNPV(int period, float principal, ArrayList<Float> cumCash){
+  public static float calcNPV(int period, float principal, ArrayList<Float> cumCash){
 
     return cumCash.get(period-1) - principal;
   }
 
-  public NPVResult calculateNPV(int periods, float principal, float interest, float tax, float salvage, int periodSalvage, ArrayList<Float> inflows, ArrayList<Float> outflows){
+  public static NPVResult calculateNPV(InputNPV input, ArrayList<Float> inflows, ArrayList<Float> outflows){
+
+    int periods = input.getPeriods();
+    float principal = input.getPrincipal();
+    float interest = input.getInterest();
+    float tax = input.getTax();
+    float salvage = input.getSalvage();
+    int periodSalvage = input.getSalvagePeriod();
 
   	interest = interest / 100;
   	tax = tax / 100;
@@ -66,15 +73,17 @@ public class NPVEvaluation {
     // Calculate CumulativeCashflow Values
     ArrayList<Float> cumulativeCashflowValues = cumCash(netPresValuePeriod, periods);
 
-    // Calculate NPVInput
+    // Calculate InputNPV
     float npv = calcNPV(periods, principal, cumulativeCashflowValues);
+
+    NPVResult npvR = new NPVResult();
 
     npvR.setNetCashFlowValues(netCashflowValues);
     npvR.setCumulativeCashFlowValues(cumulativeCashflowValues);
     npvR.setNetPresValuePeriod(netPresValuePeriod);
     npvR.setNetPresentValue(npv);
 
-    return this.npvR;
+    return npvR;
   }
 
 }

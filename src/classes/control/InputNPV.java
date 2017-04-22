@@ -3,7 +3,7 @@ package classes.control;
 /**
  * Created by erikm on 18/04/2017.
  */
-public class NPVInput {
+public class InputNPV {
     private int periods;
     private float principal;
     private float interest;
@@ -11,7 +11,7 @@ public class NPVInput {
     private float salvage;
     private int salvagePeriod;
 
-    public NPVInput(int periods, float principal, float interest, float tax, float salvage, int salvagePeriod) {
+    public InputNPV(int periods, float principal, float interest, float tax, float salvage, int salvagePeriod) {
         this.periods = periods;
         this.principal = principal;
         this.interest = interest;

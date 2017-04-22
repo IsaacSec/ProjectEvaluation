@@ -3,12 +3,12 @@ package classes.control;
 /**
  * Created by erikm on 18/04/2017.
  */
-public class PBPInput {
+public class InputPBP {
     private int periods;
     private int principal;
     private int interest;
 
-    public PBPInput(int periods, int principal, int interest) {
+    public InputPBP(int periods, int principal, int interest) {
         this.periods = periods;
         this.principal = principal;
         this.interest = interest;

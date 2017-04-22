@@ -5,8 +5,8 @@ import javafx.scene.control.TextField;
 
 public final class RowPBP {
     private final SimpleStringProperty period;
-    private TextField inflows;
-    private TextField outflows;
+    private TextField inflow;
+    private TextField outflow;
     private final SimpleStringProperty cumulativeCashFlow;
 
     public RowPBP(String period,
@@ -15,8 +15,8 @@ public final class RowPBP {
                   String cumulativeCashFlow)
     {
         this.period = new SimpleStringProperty(period);
-        this.inflows = new TextField(inflows);
-        this.outflows = new TextField(outflows);
+        this.inflow = new TextField(inflows);
+        this.outflow = new TextField(outflows);
         this.cumulativeCashFlow = new SimpleStringProperty(cumulativeCashFlow);
     }
 
@@ -34,27 +34,28 @@ public final class RowPBP {
         this.period.set(period);
     }
 
-    public TextField getInflows() {
-        return inflows;
+    public TextField getInflow() {
+        return inflow;
     }
 
-    public void setInflows(TextField inflows){
-        this.inflows = inflows;
+    public void setInflow(TextField inflow){
+        this.inflow = inflow;
     }
 
-    public void setInflows(String inflows){
-        this.inflows.setText(inflows);
+    public void setInflow(String inflows){
+        this.inflow.setText(inflows);
     }
 
-    public TextField getOutflows() {
-        return outflows;
+    public TextField getOutflow() {
+        return outflow;
     }
 
-    public void setOutflows(TextField outflows) {
-        this.outflows = outflows;
+    public void setOutflow(TextField outflow) {
+        this.outflow = outflow;
     }
-    public void setOutflows(String outflows){
-        this.outflows.setText(outflows);
+
+    public void setOutflow(String outflows){
+        this.outflow.setText(outflows);
     }
 
     public String getCumulativeCashFlow() {
