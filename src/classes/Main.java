@@ -1,15 +1,12 @@
 package classes;
 
-import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
-import classes.control.ButtonSupport;
-import classes.control.TableSupport;
+import classes.control.ButtonAction;
+import classes.control.TableAction;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,13 +21,13 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        TableSupport.initTablePBP(scene);
-        TableSupport.initTableNPV(scene);
-        TableSupport.initTableDEP(scene);
-        TableSupport.initTableChecklist(scene);
+        TableAction.initTablePBP(scene);
+        TableAction.initTableNPV(scene);
+        TableAction.initTableDEP(scene);
+        TableAction.initTableChecklist(scene);
 
-        ButtonSupport.initPBPButtons(scene);
-        ButtonSupport.initNPVButtons(scene);
+        ButtonAction.initPBPButtons(scene);
+        ButtonAction.initNPVButtons(scene);
     }
 
     public static void main(String[] args)

@@ -7,14 +7,19 @@ import classes.tablemodel.RowDEP;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 
-public class TableSupport {
+public class TableAction {
+
+    private static final int ROW_LIMIT = 100;
 
     public static void initTablePBP(Scene scene){
 
@@ -30,7 +35,8 @@ public class TableSupport {
         cumulative.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("cumulativeCashFlow"));
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
-        tf.setOnAction(e -> displayPBPRows(scene, table));
+        //tf.setOnAction(e -> displayPBPRows(scene, table));
+        tf.addEventHandler(InputEvent.ANY, event -> displayPBPRows(scene, table));
     }
 
     private static void displayPBPRows(Scene scene, TableView<RowPBP> table){
@@ -44,8 +50,12 @@ public class TableSupport {
             return;
         }
 
-        for(int i=data.size(); i<=periods; i++){
+        for(int i=data.size(); i<=periods && i<= ROW_LIMIT; i++){
             data.add(new RowPBP(""+i,"","",""));
+        }
+
+        if(data.size() > periods+1){   // +1 Because it starts from 0
+            data.remove(periods, data.size());
         }
 
         SetData.initPBPTableValues(scene);
@@ -66,11 +76,9 @@ public class TableSupport {
         netCash.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("netCashFlow"));
         cumulative.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("cumulativeCashFlow"));
 
-        //outflows.setCellFactory(TextFieldTableCell.forTableColumn());
-        //inflows.setCellFactory(TextFieldTableCell.forTableColumn());
-
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
-        tf.setOnAction(e -> displayNPVRows(scene, table));
+        //tf.setOnAction(e -> displayNPVRows(scene, table));
+        tf.addEventHandler(InputEvent.ANY, event -> displayNPVRows(scene, table));
     }
 
     private static void displayNPVRows(Scene scene, TableView<RowNPV> table){
@@ -84,8 +92,12 @@ public class TableSupport {
             return;
         }
 
-        for(int i=data.size(); i<periods; i++){
+        for(int i=data.size(); i<periods && i< ROW_LIMIT; i++){
             data.add(new RowNPV(""+(i+1),"","","",""));
+        }
+
+        if(data.size() > periods){
+            data.remove(periods, data.size());
         }
 
         SetData.initNPVTableValues(scene);
@@ -111,7 +123,8 @@ public class TableSupport {
         taxYear.setCellValueFactory(new PropertyValueFactory<RowDEP, String>("taxPerYear"));
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
-        tf.setOnAction(e -> displayDEPRows(scene, table));
+        //tf.setOnAction(e -> displayDEPRows(scene, table));
+        tf.addEventHandler(InputEvent.ANY, event -> displayDEPRows(scene, table));
     }
 
     private static void displayDEPRows(Scene scene, TableView<RowDEP> table){
@@ -125,8 +138,12 @@ public class TableSupport {
             return;
         }
 
-        for(int i=data.size(); i<=periods; i++){
+        for(int i=data.size(); i<=periods && i<= ROW_LIMIT; i++){
             data.add(new RowDEP(""+(i+1),"","","","","",""));
+        }
+
+        if(data.size() > periods){
+            data.remove(periods, data.size());
         }
     }
 

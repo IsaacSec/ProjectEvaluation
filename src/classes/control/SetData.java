@@ -161,6 +161,6 @@ public class SetData {
         npvresultTF.setText("");
     }
 
-    // TODO: method setMissingPBPTableValues() that fills empty cells (PBP) with 0
-    // TODO: method setMissingNPVTableValues() that fills empty cells (NPV) with 0
+    // TODO: method setEmptyPBPTableValues() that fills empty cells (PBP) with 0
+    // TODO: method setEmptyNPVTableValues() that fills empty cells (NPV) with 0
 }

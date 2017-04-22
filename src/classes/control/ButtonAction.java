@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
 
-public class ButtonSupport {
+public class ButtonAction {
     public static void initPBPButtons(Scene scene){
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_PBP_CALCULATE);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_PBP_CLEAR);

@@ -3,9 +3,9 @@ package classes;
 import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
-import classes.control.ButtonSupport;
+import classes.control.ButtonAction;
 import classes.tablemodel.RowPBP;
-import classes.control.TableSupport;
+import classes.control.TableAction;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -46,11 +46,11 @@ public class Example extends Application{
         Button b1 = (Button) scene.lookup(CNodeID.BUTTON_PBP_CLEAR);
         b1.setOnAction( e -> clear(scene));
 
-        TableSupport.initTablePBP(scene);
-        TableSupport.initTableNPV(scene);
-        TableSupport.initTableDEP(scene);
-        TableSupport.initTableChecklist(scene);
-        ButtonSupport.initPBPButtons(scene);
+        TableAction.initTablePBP(scene);
+        TableAction.initTableNPV(scene);
+        TableAction.initTableDEP(scene);
+        TableAction.initTableChecklist(scene);
+        ButtonAction.initPBPButtons(scene);
     }
 
     public static void calculate(Scene scene){
