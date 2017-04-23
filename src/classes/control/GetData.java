@@ -31,26 +31,14 @@ public class GetData {
             try {
                 pbp = new InputPBP(Integer.parseInt(periods.getText()), Float.parseFloat(principal.getText()), Float.parseFloat(interest.getText()));
             }catch (NumberFormatException nfe){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText(null);
-                alert.setContentText("The Period and Principal need to be numbers");
-                alert.showAndWait();
+                displayError("Error",null,"The Period, Principal and Interest rate must be numbers" );
                 pbp = null;
             }
         }else{
             if(periods.getText().isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Missing information");
-                alert.setContentText("You need to specify the time period.");
-                alert.showAndWait();
+                displayError("Error",null,"You need to specify the time period." );
             }else if (principal.getText().isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Missing information");
-                alert.setContentText("You need to specify the principal investment.");
-                alert.showAndWait();
+                displayError("Error",null,"You need to specify the principal investment." );
             }
             pbp = null;
         }
@@ -58,6 +46,7 @@ public class GetData {
     }
 
     public static InputNPV getNetPresentValueInput(Scene scene){
+        InputNPV npv;
         TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
         TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PRINCIPAL);
         TextField interest = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_INTEREST_RATE);
@@ -65,21 +54,31 @@ public class GetData {
         TextField salvage = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_SALVAGE_VALUE);
         TextField salvagePeriod = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIOD_SV);
 
-        int per = Integer.parseInt(periods.getText());
-        float pri = Float.parseFloat(principal.getText());
-        float inte = Float.parseFloat(interest.getText());
-        float taxes = Float.parseFloat(tax.getText());
-        float salv = Float.parseFloat(salvage.getText());
-        int salvp = Integer.parseInt(salvagePeriod.getText());
+        try {
+            int per = Integer.parseInt(periods.getText());
+            float pri = Float.parseFloat(principal.getText());
+            float inte = Float.parseFloat(interest.getText());
+            float taxes = Float.parseFloat(tax.getText());
+            float salv = Float.parseFloat(salvage.getText());
+            int salvp = Integer.parseInt(salvagePeriod.getText());
 
+            if (salvp > per){
+                displayError("Error",null,"The salvage period can't be greater than the period" );
+                npv = null;
+            }else {
+                npv = new InputNPV(per, pri, inte, taxes, salv, salvp);
+            }
 
-        InputNPV npv = new InputNPV(per,pri,inte,taxes,salv,salvp);
-
+        }catch (NumberFormatException nfe){
+            displayError("Error",null,"Period, Principal, Interest rate, Tax rate, Salvage value and Salvage period must be numbers" );
+            npv= null;
+        }
 
         return npv;
     }
 
     public static InputDEP getDepreciationInput(Scene scene){
+        InputDEP dep;
         TextField periodsTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
         TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PRINCIPAL);
         TextField taxTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_TAX_RATE);
@@ -88,15 +87,20 @@ public class GetData {
         ChoiceBox<String> categoryCB = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
         TextField startingYearTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_STARTING_YEAR);
 
-        int periods = Integer.parseInt(periodsTF.getText());
-        float principal = Float.parseFloat(principalTF.getText());
-        float tax = Float.parseFloat(taxTF.getText());
-        float salvageValue = Float.parseFloat(salvageValueTF.getText());
-        int periodSV = Integer.parseInt(periodSVTF.getText());
-        String category = categoryCB.getValue();
-        int startingYear = Integer.parseInt(startingYearTF.getText());
+        try {
+            int periods = Integer.parseInt(periodsTF.getText());
+            float principal = Float.parseFloat(principalTF.getText());
+            float tax = Float.parseFloat(taxTF.getText());
+            float salvageValue = Float.parseFloat(salvageValueTF.getText());
+            int periodSV = Integer.parseInt(periodSVTF.getText());
+            String category = categoryCB.getValue();
+            int startingYear = Integer.parseInt(startingYearTF.getText());
 
-        InputDEP dep = new InputDEP(periods,principal,tax,salvageValue,periodSV,category,startingYear);
+            dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+        }catch (NumberFormatException nfe){
+            displayError("Error",null,"Period, Principal, Tax rate, Salvage value, salvage period and Starting year must be numbers" );
+            return null;
+        }
         return dep;
     }
 
@@ -119,11 +123,7 @@ public class GetData {
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All Outflows in the table must be numbers");
-            alert.showAndWait();
+            displayError("Error",null,"All Outflows in the table must be numbers" );
         }
 
         return outflows;
@@ -147,11 +147,7 @@ public class GetData {
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All Inflows in the table must be numbers");
-            alert.showAndWait();
+            displayError("Error",null,"All Inflows in the table must be numbers" );
         }
         return inflows;
     }
@@ -175,11 +171,7 @@ public class GetData {
                 outflows.add(outflow);                                              //Add the outflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All Outflows in the table must be numbers");
-            alert.showAndWait();
+            displayError("Error",null,"All Outflows in the table must be numbers" );
         }
 
         return outflows;
@@ -203,12 +195,17 @@ public class GetData {
                 inflows.add(inflow);                                            //Add the inflow to the inflow array list
             }
         }catch (NumberFormatException nfe){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("All Inflows in the table must be numbers");
-            alert.showAndWait();
+            displayError("Error",null,"All Inflows in the table must be numbers" );
         }
         return inflows;
+    }
+
+
+    public static void displayError(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

@@ -4,6 +4,8 @@ import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
 import classes.control.ButtonAction;
+import classes.control.GetData;
+import classes.control.SetData;
 import classes.tablemodel.RowPBP;
 import classes.control.TableAction;
 import javafx.application.Application;
@@ -29,6 +31,8 @@ public class Example extends Application{
         primaryStage.show();
 
 
+        SetData setData = new SetData();
+        setData.setPayBackPeriod(scene,"0","0","0");
         /*
         Label l = (Label)scene.lookup(CNodeID.LABEL_SYSTEM_MESSAGE);
 
@@ -68,9 +72,11 @@ public class Example extends Application{
     }
 
     public static void clear(Scene scene){
+        SetData setData = new SetData();
         TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
         ObservableList<RowPBP> rows = table.getItems();
         rows.clear();
+        setData.setPayBackPeriod(scene,"0","0","0");
     }
 
     public static void main(String[] args)

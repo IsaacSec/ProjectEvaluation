@@ -70,9 +70,9 @@ public class SetData {
         TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
         TextField interestTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_INTEREST_RATE);
 
-        periods.setText("");
-        principalTF.setText("");
-        interestTF.setText("");
+        periods.setText("0");
+        principalTF.setText("0");
+        interestTF.setText("0");
     }
 
     /**
@@ -171,13 +171,13 @@ public class SetData {
         TextField periodSVTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIOD_SV);
         TextField npvresultTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_RESULT);
 
-        periods.setText("");
-        principalTF.setText("");
-        interestTF.setText("");
-        taxTF.setText("");
-        salvageTF.setText("");
-        periodSVTF.setText("");
-        npvresultTF.setText("");
+        periods.setText("0");
+        principalTF.setText("0");
+        interestTF.setText("0");
+        taxTF.setText("0");
+        salvageTF.setText("0");
+        periodSVTF.setText("0");
+        npvresultTF.setText("0");
     }
 
     public static void clearDepreciation(Scene scene){
@@ -192,14 +192,15 @@ public class SetData {
         ChoiceBox<String> category = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
         TextField startingYear = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_STARTING_YEAR);
 
-        periods.setText("");
-        principal.setText("");
-        tax.setText("");
-        salvageValue.setText("");
-        periodSV.setText("");
+        periods.setText("0");
+        principal.setText("0");
+        tax.setText("0");
+        salvageValue.setText("0");
+        periodSV.setText("0");
         category.setValue("3 Years");
-        startingYear.setText("");
+        startingYear.setText("0");
     }
+
 
     // TODO: method setEmptyPBPTableValues() that fills empty cells (PBP) with 0
     // TODO: method setEmptyNPVTableValues() that fills empty cells (NPV) with 0
