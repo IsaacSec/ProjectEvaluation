@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
@@ -71,30 +71,35 @@
                      <content>
                         <SplitPane dividerPositions="0.25666666666666665, 0.6716666666666666" prefHeight="160.0" prefWidth="200.0">
                           <items>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Label layoutX="49.0" layoutY="42.0" text="Periods">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="48.0" layoutY="98.0" text="Principal">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="48.0" layoutY="130.0" prefHeight="69.0" prefWidth="74.0" text="Interest Rate %" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="PBPPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="PBPPrincipal" layoutX="153.0" layoutY="97.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="PBPInterestRate" layoutX="153.0" layoutY="153.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <Button fx:id="PBPCalculate" layoutX="46.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
-                                    <Button fx:id="PBPClear" layoutX="165.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                    <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
-                                 </children></AnchorPane>
+                              <ScrollPane>
+                                 <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="605.0" prefWidth="298.0">
+                                       <children>
+                                          <Label layoutX="49.0" layoutY="42.0" text="Periods">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="98.0" text="Principal">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="130.0" prefHeight="69.0" prefWidth="74.0" text="Interest Rate %" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="PBPPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="PBPPrincipal" layoutX="153.0" layoutY="97.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="PBPInterestRate" layoutX="153.0" layoutY="153.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <Button fx:id="PBPCalculate" layoutX="46.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
+                                          <Button fx:id="PBPClear" layoutX="165.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
+                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                               <ScrollPane prefHeight="608.0" prefWidth="678.0">
                                 <content>
                                   <AnchorPane fx:id="AnchorTable" minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="453.0">
@@ -136,49 +141,53 @@
                      <content>
                         <SplitPane dividerPositions="0.2575, 0.7" prefHeight="200.0" prefWidth="200.0">
                            <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Label layoutX="49.0" layoutY="42.0" text="Periods">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="48.0" layoutY="98.0" text="Principal">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="48.0" layoutY="130.0" prefHeight="69.0" prefWidth="74.0" text="Interest Rate %" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="NPVPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="NPVPrincipal" layoutX="153.0" layoutY="97.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="NPVInterestRate" layoutX="153.0" layoutY="153.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <Button fx:id="NPVCalculate" layoutX="48.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
-                                    <Button fx:id="NPVClear" layoutX="167.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                    <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
-                                    <Label layoutX="48.0" layoutY="250.0" text="Salvage Value">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="NPVSalvageValue" layoutX="153.0" layoutY="249.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <Label layoutX="48.0" layoutY="303.0" text="Period SV">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="NPVPeriodSV" layoutX="153.0" layoutY="302.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <Label layoutX="49.0" layoutY="181.0" prefHeight="69.0" prefWidth="74.0" text="Tax Rate %" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="NPVTaxRate" layoutX="154.0" layoutY="204.0" prefHeight="26.0" prefWidth="103.0" />
-                                 </children>
-                              </AnchorPane>
+                              <ScrollPane>
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="301.0">
+                                       <children>
+                                          <Label layoutX="49.0" layoutY="42.0" text="Periods">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="98.0" text="Principal">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="130.0" prefHeight="69.0" prefWidth="74.0" text="Interest Rate %" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="NPVPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="NPVPrincipal" layoutX="153.0" layoutY="97.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="NPVInterestRate" layoutX="153.0" layoutY="153.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <TextField fx:id="NPVTaxRate" layoutX="154.0" layoutY="204.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <TextField fx:id="NPVSalvageValue" layoutX="153.0" layoutY="249.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="NPVPeriodSV" layoutX="153.0" layoutY="302.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <Button fx:id="NPVCalculate" layoutX="48.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
+                                          <Button fx:id="NPVClear" layoutX="167.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
+                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                          <Label layoutX="48.0" layoutY="250.0" text="Salvage Value">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="303.0" text="Period SV">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="49.0" layoutY="181.0" prefHeight="69.0" prefWidth="74.0" text="Tax Rate %" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                               <ScrollPane prefHeight="608.0" prefWidth="678.0">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="507.0">
@@ -230,56 +239,60 @@
                      <content>
                         <SplitPane dividerPositions="0.2575, 0.7258333333333333" prefHeight="200.0" prefWidth="200.0">
                            <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Label layoutX="49.0" layoutY="42.0" text="Periods">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="48.0" layoutY="84.0" text="Principal">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="49.0" layoutY="118.0" prefHeight="47.0" prefWidth="74.0" text="Tax Rate %" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="DEPPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="DEPPrincipal" layoutX="153.0" layoutY="83.0" prefHeight="26.0" prefWidth="104.0" />
-                                    <TextField fx:id="DEPTaxRate" layoutX="153.0" layoutY="127.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <Button fx:id="DEPMACRS" layoutX="48.0" layoutY="504.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" text="MACRS" />
-                                    <Button fx:id="DEPClear" layoutX="167.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                    <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
-                                    <Label layoutX="49.0" layoutY="165.0" prefHeight="47.0" prefWidth="74.0" text="Salvage Value" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="DEPSalvageValue" layoutX="153.0" layoutY="174.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <Label layoutX="49.0" layoutY="212.0" prefHeight="47.0" prefWidth="74.0" text="Period SV" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="DEPPeriodSV" layoutX="153.0" layoutY="221.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <Label layoutX="49.0" layoutY="255.0" prefHeight="47.0" prefWidth="74.0" text="Category" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="49.0" layoutY="302.0" prefHeight="47.0" prefWidth="74.0" text="Starting Year" wrapText="true">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="DEPStartingYear" layoutX="153.0" layoutY="313.0" prefHeight="26.0" prefWidth="103.0" />
-                                    <ChoiceBox fx:id="DEPCategory" layoutX="155.0" layoutY="267.0" prefHeight="28.0" prefWidth="102.0" />
-                                    <Button fx:id="DEPStraightLine" layoutX="48.0" layoutY="458.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" text="Straight Line" />
-                                 </children>
-                              </AnchorPane>
+                              <ScrollPane>
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="608.0" prefWidth="301.0">
+                                       <children>
+                                          <Label layoutX="49.0" layoutY="42.0" text="Periods">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="48.0" layoutY="84.0" text="Principal">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="49.0" layoutY="118.0" prefHeight="47.0" prefWidth="74.0" text="Tax Rate %" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="DEPPeriods" layoutX="153.0" layoutY="41.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="DEPPrincipal" layoutX="153.0" layoutY="83.0" prefHeight="26.0" prefWidth="104.0" />
+                                          <TextField fx:id="DEPTaxRate" layoutX="153.0" layoutY="127.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <TextField fx:id="DEPSalvageValue" layoutX="153.0" layoutY="174.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <TextField fx:id="DEPPeriodSV" layoutX="153.0" layoutY="221.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <ChoiceBox fx:id="DEPCategory" layoutX="155.0" layoutY="267.0" prefHeight="28.0" prefWidth="102.0" />
+                                          <TextField fx:id="DEPStartingYear" layoutX="153.0" layoutY="313.0" prefHeight="26.0" prefWidth="103.0" />
+                                          <Button fx:id="DEPMACRS" layoutX="48.0" layoutY="504.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" text="MACRS" />
+                                          <Button fx:id="DEPClear" layoutX="167.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
+                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                          <Label layoutX="49.0" layoutY="165.0" prefHeight="47.0" prefWidth="74.0" text="Salvage Value" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="49.0" layoutY="212.0" prefHeight="47.0" prefWidth="74.0" text="Period SV" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="49.0" layoutY="255.0" prefHeight="47.0" prefWidth="74.0" text="Category" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="49.0" layoutY="302.0" prefHeight="47.0" prefWidth="74.0" text="Starting Year" wrapText="true">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="DEPStraightLine" layoutX="48.0" layoutY="458.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" text="Straight Line" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                               <ScrollPane prefHeight="608.0" prefWidth="678.0">
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="606.0" prefWidth="517.0">

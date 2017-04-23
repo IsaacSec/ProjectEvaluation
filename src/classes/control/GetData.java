@@ -29,7 +29,7 @@ public class GetData {
         if(!periods.getText().isEmpty()&& !principal.getText().isEmpty()) {
             if(interest.getText().isEmpty())interest.setText("0");
             try {
-                pbp = new InputPBP(Integer.parseInt(periods.getText()), Integer.parseInt(principal.getText()), Integer.parseInt(interest.getText()));
+                pbp = new InputPBP(Integer.parseInt(periods.getText()), Float.parseFloat(principal.getText()), Float.parseFloat(interest.getText()));
             }catch (NumberFormatException nfe){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
