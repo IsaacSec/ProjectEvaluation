@@ -5,10 +5,10 @@ package classes.control;
  */
 public class InputPBP {
     private int periods;
-    private int principal;
-    private int interest;
+    private float principal;
+    private float interest;
 
-    public InputPBP(int periods, int principal, int interest) {
+    public InputPBP(int periods, float principal, float interest) {
         this.periods = periods;
         this.principal = principal;
         this.interest = interest;
@@ -22,19 +22,19 @@ public class InputPBP {
         this.periods = periods;
     }
 
-    public int getPrincipal() {
+    public float getPrincipal() {
         return principal;
     }
 
-    public void setPrincipal(int principal) {
+    public void setPrincipal(float principal) {
         this.principal = principal;
     }
 
-    public int getInterest() {
+    public float getInterest() {
         return interest;
     }
 
-    public void setInterest(int interest) {
+    public void setInterest(float interest) {
         this.interest = interest;
     }
 

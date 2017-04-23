@@ -89,11 +89,11 @@ public class TableAction {
             return;
         }
 
-        for(int i=data.size(); i<periods && i< ROW_LIMIT; i++){
-            data.add(new RowNPV(""+(i+1),"","","",""));
+        for(int i=data.size(); i <= periods && i <= ROW_LIMIT; i++){
+            data.add(new RowNPV(""+(i),"","","",""));
         }
 
-        if(data.size() > periods){
+        if(data.size() > periods+1){
             data.remove(periods, data.size());
         }
 
@@ -134,11 +134,11 @@ public class TableAction {
             return;
         }
 
-        for(int i=data.size(); i<=periods && i<= ROW_LIMIT; i++){
-            data.add(new RowDEP(""+(i+1),"","","","","",""));
+        for(int i=data.size(); i<= periods && i <= ROW_LIMIT; i++){
+            data.add(new RowDEP(""+(i),"","","","","",""));
         }
 
-        if(data.size() > periods){
+        if(data.size() >= periods+1){
             data.remove(periods, data.size());
         }
     }
