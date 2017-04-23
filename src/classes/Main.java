@@ -4,6 +4,7 @@ import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
 import classes.control.ButtonAction;
+import classes.control.SetData;
 import classes.control.TableAction;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,10 @@ public class Main extends Application {
         ButtonAction.initPBPButtons(scene);
         ButtonAction.initNPVButtons(scene);
         ButtonAction.initDEPButtons(scene);
+
+        SetData.clearDepreciation(scene);
+        SetData.clearNetPresentValue(scene);
+        SetData.clearPayBackPeriod(scene);
     }
 
     public static void main(String[] args)

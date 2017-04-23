@@ -21,7 +21,9 @@ public class ButtonAction {
         InputPBP inputPBP = getPayBackPeriodInput(scene);
         PBPResult pbpResult = PBPEvaluation.calculatePBP(inputPBP, getPBPOutflows(scene), getPBPInflows(scene));
 
-        setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
+        if(pbpResult != null) {
+            setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
+        }
     }
 
     private static void clearPBP(Scene scene){
@@ -39,12 +41,13 @@ public class ButtonAction {
     private static void calculateNPV(Scene scene){
         InputNPV input = getNetPresentValueInput(scene);
 
-        // TODO: Validate that the periodSalvage does not surpass the highest period
+        if(input != null) {
 
-        NPVResult result = NPVEvaluation.calculateNPV(input, getNPVInflows(scene),getNPVOutflows(scene));
+            NPVResult result = NPVEvaluation.calculateNPV(input, getNPVInflows(scene), getNPVOutflows(scene));
 
-        setNPVCumulativeCashFlow(scene, result.getCumulativeCashFlowValues());
-        setNPVNetCashFlow(scene, result.getNetCashFlowValues());
+            setNPVCumulativeCashFlow(scene, result.getCumulativeCashFlowValues());
+            setNPVNetCashFlow(scene, result.getNetCashFlowValues());
+        }
     }
 
     private static void clearNPV(Scene scene){
@@ -63,16 +66,20 @@ public class ButtonAction {
 
     private static void calculateStraightLineDEP(Scene scene){
         InputDEP input = getDepreciationInput(scene);
-        DEPResult result = DEPEvaluation.calculateStraightLine(input);
+        if(input != null) {
+            DEPResult result = DEPEvaluation.calculateStraightLine(input);
 
-        setDepreciationResults(scene, result, input.getStartingYear());
+            setDepreciationResults(scene, result, input.getStartingYear());
+        }
     }
 
     private static void calculateMACRS(Scene scene){
         InputDEP input = getDepreciationInput(scene);
-        DEPResult result = DEPEvaluation.calculateMACRS(input);
+        if(input != null) {
+            DEPResult result = DEPEvaluation.calculateMACRS(input);
 
-        setDepreciationResults(scene, result, input.getStartingYear());
+            setDepreciationResults(scene, result, input.getStartingYear());
+        }
     }
 
     private static void clearDEP(Scene scene){
