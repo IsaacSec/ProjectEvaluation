@@ -7,15 +7,13 @@ import classes.tablemodel.RowDEP;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyEvent;
 
 public class TableAction {
 
@@ -35,11 +33,11 @@ public class TableAction {
         cumulative.setCellValueFactory(new PropertyValueFactory<RowPBP, String>("cumulativeCashFlow"));
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
-        //tf.setOnAction(e -> displayPBPRows(scene, table));
-        tf.addEventHandler(InputEvent.ANY, event -> displayPBPRows(scene, table));
+        tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayPBPRows(scene, table));
     }
 
     private static void displayPBPRows(Scene scene, TableView<RowPBP> table){
+
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         int periods;
         ObservableList<RowPBP> data = table.getItems();
@@ -77,8 +75,7 @@ public class TableAction {
         cumulative.setCellValueFactory(new PropertyValueFactory<RowNPV, String>("cumulativeCashFlow"));
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
-        //tf.setOnAction(e -> displayNPVRows(scene, table));
-        tf.addEventHandler(InputEvent.ANY, event -> displayNPVRows(scene, table));
+        tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayNPVRows(scene, table));
     }
 
     private static void displayNPVRows(Scene scene, TableView<RowNPV> table){
@@ -123,8 +120,7 @@ public class TableAction {
         taxYear.setCellValueFactory(new PropertyValueFactory<RowDEP, String>("taxPerYear"));
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
-        //tf.setOnAction(e -> displayDEPRows(scene, table));
-        tf.addEventHandler(InputEvent.ANY, event -> displayDEPRows(scene, table));
+        tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayDEPRows(scene, table));
     }
 
     private static void displayDEPRows(Scene scene, TableView<RowDEP> table){

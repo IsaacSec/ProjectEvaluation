@@ -1,10 +1,13 @@
 package classes.control;
 
 import classes.config.CNodeID;
+import classes.screening.DEPResult;
+import classes.tablemodel.RowDEP;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -140,6 +143,22 @@ public class SetData {
         }
     }
 
+    public static void setDepreciationResults(Scene scene, DEPResult result, int startingYear){
+        TableView<RowDEP> table = (TableView<RowDEP>) scene.lookup(CNodeID.TABLE_DEP);
+        ObservableList<RowDEP> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowDEP row = rows.get(i);
+            row.setYears(""+(startingYear+i));
+            row.setDepreciationRate(""+result.getDepreciationRate().get(i));
+            row.setAnnualDepreciation(""+result.getAnnualDepreciation().get(i));
+            row.setAccumulativeDepreciation(""+result.getAccumulatedDepreciation().get(i));
+            row.setValueLedgers(""+result.getLedgerValues().get(i));
+            row.setTaxPerYear(""+result.getTaxPerYear().get(i));
+        }
+    }
+
     public static void clearNetPresentValue(Scene scene){
         TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
         table.getItems().clear();
@@ -159,6 +178,27 @@ public class SetData {
         salvageTF.setText("");
         periodSVTF.setText("");
         npvresultTF.setText("");
+    }
+
+    public static void clearDepreciation(Scene scene){
+        TableView<RowDEP> table = (TableView<RowDEP>) scene.lookup(CNodeID.TABLE_DEP);
+        table.getItems().clear();
+
+        TextField periods = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
+        TextField principal = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PRINCIPAL);
+        TextField tax = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_TAX_RATE);
+        TextField salvageValue = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_SALVAGE_VALUE);
+        TextField periodSV = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIOD_SV);
+        ChoiceBox<String> category = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
+        TextField startingYear = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_STARTING_YEAR);
+
+        periods.setText("");
+        principal.setText("");
+        tax.setText("");
+        salvageValue.setText("");
+        periodSV.setText("");
+        category.setValue("3 Years");
+        startingYear.setText("");
     }
 
     // TODO: method setEmptyPBPTableValues() that fills empty cells (PBP) with 0

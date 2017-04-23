@@ -5,9 +5,7 @@ import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.ArrayList;
 
@@ -79,6 +77,27 @@ public class GetData {
 
 
         return npv;
+    }
+
+    public static InputDEP getDepreciationInput(Scene scene){
+        TextField periodsTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
+        TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PRINCIPAL);
+        TextField taxTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_TAX_RATE);
+        TextField salvageValueTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_SALVAGE_VALUE);
+        TextField periodSVTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIOD_SV);
+        ChoiceBox<String> categoryCB = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
+        TextField startingYearTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_STARTING_YEAR);
+
+        int periods = Integer.parseInt(periodsTF.getText());
+        float principal = Float.parseFloat(principalTF.getText());
+        float tax = Float.parseFloat(taxTF.getText());
+        float salvageValue = Float.parseFloat(salvageValueTF.getText());
+        int periodSV = Integer.parseInt(periodSVTF.getText());
+        String category = categoryCB.getValue();
+        int startingYear = Integer.parseInt(startingYearTF.getText());
+
+        InputDEP dep = new InputDEP(periods,principal,tax,salvageValue,periodSV,category,startingYear);
+        return dep;
     }
 
     /**

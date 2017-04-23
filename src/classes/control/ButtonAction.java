@@ -2,14 +2,8 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.screening.*;
-import classes.tablemodel.RowNPV;
-import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
 
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
@@ -30,7 +24,7 @@ public class ButtonAction {
         setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
     }
 
-    private  static void clearPBP(Scene scene){
+    private static void clearPBP(Scene scene){
         clearPayBackPeriod(scene);
     }
 
@@ -55,5 +49,33 @@ public class ButtonAction {
 
     private static void clearNPV(Scene scene){
         clearNetPresentValue(scene);
+    }
+
+    public static void initDEPButtons(Scene scene){
+        Button straightLine = (Button) scene.lookup(CNodeID.BUTTON_DEP_STRAIGHT_LINE);
+        Button macrs = (Button) scene.lookup(CNodeID.BUTTON_DEP_MACRS);
+        Button clear = (Button) scene.lookup(CNodeID.BUTTON_DEP_CLEAR);
+
+        straightLine.setOnAction(event -> calculateStraightLineDEP(scene));
+        macrs.setOnAction(event -> calculateMACRS(scene));
+        clear.setOnAction(event -> clearDEP(scene));
+    }
+
+    private static void calculateStraightLineDEP(Scene scene){
+        InputDEP input = getDepreciationInput(scene);
+        DEPResult result = DEPEvaluation.calculateStraightLine(input);
+
+        setDepreciationResults(scene, result, input.getStartingYear());
+    }
+
+    private static void calculateMACRS(Scene scene){
+        InputDEP input = getDepreciationInput(scene);
+        DEPResult result = DEPEvaluation.calculateMACRS(input);
+
+        setDepreciationResults(scene, result, input.getStartingYear());
+    }
+
+    private static void clearDEP(Scene scene){
+        clearDepreciation(scene);
     }
 }
