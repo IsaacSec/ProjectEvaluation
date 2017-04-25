@@ -30,6 +30,7 @@ public class Main extends Application {
         category.getItems().addAll("3 Years","5 Years","7 Years","10 Years","15 Years","20 Years");
         category.setValue("3 Years");
 
+
         TableAction.initTablePBP(scene);
         TableAction.initTableNPV(scene);
         TableAction.initTableDEP(scene);
@@ -38,6 +39,7 @@ public class Main extends Application {
         ButtonAction.initPBPButtons(scene);
         ButtonAction.initNPVButtons(scene);
         ButtonAction.initDEPButtons(scene);
+        ButtonAction.initMenu(scene);
 
         SetData.clearDepreciation(scene);
         SetData.clearNetPresentValue(scene);

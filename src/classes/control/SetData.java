@@ -250,4 +250,12 @@ public class SetData {
         startingYearTF.setText(year);
 
     }
+
+    public static void setProjectInfo(Scene scene, String nameString, String evaluationString){
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
+        TextField evaluatorName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
+
+        projectName.setText(nameString);
+        evaluatorName.setText(evaluationString);
+    }
 }

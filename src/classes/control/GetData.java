@@ -215,4 +215,17 @@ public class GetData {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    public static String getProjectName(Scene scene){
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_PROJECT_NAME);
+
+        return projectName.getText();
+
+    }
+    public static String getProjectEvaluator(Scene scene){
+        TextField evaluatorName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
+        if(evaluatorName == null) System.out.println("Error");
+        return evaluatorName.getText();
+
+    }
 }

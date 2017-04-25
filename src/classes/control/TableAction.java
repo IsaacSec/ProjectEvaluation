@@ -38,7 +38,7 @@ public class TableAction {
         tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayPBPRows(scene, table));
     }
 
-    private static void displayPBPRows(Scene scene, TableView<RowPBP> table){
+    public static void displayPBPRows(Scene scene, TableView<RowPBP> table){
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         int periods;
@@ -80,7 +80,7 @@ public class TableAction {
         tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayNPVRows(scene, table));
     }
 
-    private static void displayNPVRows(Scene scene, TableView<RowNPV> table){
+    public static void displayNPVRows(Scene scene, TableView<RowNPV> table){
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_PERIODS);
         int periods;
         ObservableList<RowNPV> data = table.getItems();
@@ -125,7 +125,7 @@ public class TableAction {
         tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayDEPRows(scene, table));
     }
 
-    private static void displayDEPRows(Scene scene, TableView<RowDEP> table){
+    public static void displayDEPRows(Scene scene, TableView<RowDEP> table){
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
         int periods;
         ObservableList<RowDEP> data = table.getItems();

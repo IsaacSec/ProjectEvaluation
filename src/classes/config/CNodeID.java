@@ -3,6 +3,15 @@ package classes.config;
 public class CNodeID {
     public static final String LABEL_SYSTEM_MESSAGE = "#SystemMessage";
 
+    public static final String TEXTFIELD_PROJECT_NAME = "#ProjectName";
+    public static final String TEXTFIELD_EVALUATOR_NAME = "#EvaluatorName";
+
+    public static final String MENU_BAR = "#MenuBar";
+    public static final String MENU_FILE_NEW = "#FileNew";
+    public static final String MENU_FILE_OPEN = "#FileOpen";
+    public static final String MENU_FILE_SAVE = "#FileSave";
+    public static final String MENU_FILE_CLOSE = "#FileClose";
+
     public static final String TEXTFIELD_PBP_PERIODS = "#PBPPeriods";
     public static final String TEXTFIELD_PBP_PRINCIPAL = "#PBPPrincipal";
     public static final String TEXTFIELD_PBP_INTEREST_RATE = "#PBPInterestRate";
