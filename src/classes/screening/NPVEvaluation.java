@@ -6,12 +6,16 @@ import java.util.*;
 
 public class NPVEvaluation {
 
-  public static ArrayList<Float> calcNetCash(ArrayList<Float> inflows, ArrayList<Float> outflows, int periods){
+  public static ArrayList<Float> calcNetCash(ArrayList<Float> inflows, ArrayList<Float> outflows, float principal ,int periods){
 
     ArrayList<Float> answer = new ArrayList<Float>();
 
-    for(int i = 0; i < periods; i++){
-      answer.add(inflows.get(i) - outflows.get(i));
+    for(int i = 0; i <= periods; i++){
+        if(i == 0){
+            answer.add(inflows.get(i) - outflows.get(i) - principal);
+        }else{
+            answer.add(inflows.get(i) - outflows.get(i));
+        }
     }
     return answer;
   }
@@ -23,7 +27,7 @@ public class NPVEvaluation {
     //Add the first value without any other operation
     answer.add(netPresPeriod.get(0));
 
-    for(int i = 1; i<periods;i++){
+    for(int i = 1; i<= periods;i++){
       answer.add(answer.get(i-1) + netPresPeriod.get(i));
     }
     return answer;
@@ -32,7 +36,7 @@ public class NPVEvaluation {
   public static ArrayList<Float> calcNetPresValuePeriod(ArrayList<Float> netcash, float interest, float tax){
 
     ArrayList<Float> answer = new ArrayList<Float>();
-    int i = 1;
+    int i = 0;
 
     for(float net : netcash){
       Double divisor = Math.pow(1+interest,i);
@@ -43,9 +47,9 @@ public class NPVEvaluation {
     return answer;
   }
 
-  public static float calcNPV(int period, float principal, ArrayList<Float> cumCash){
+  public static float calcNPV(int period, ArrayList<Float> cumCash){
 
-    return cumCash.get(period-1) - principal;
+    return cumCash.get(period);
   }
 
   public static NPVResult calculateNPV(InputNPV input, ArrayList<Float> inflows, ArrayList<Float> outflows){
@@ -62,10 +66,10 @@ public class NPVEvaluation {
 
     // Add Salvage Value to the corresponding period
     // inflows.add(periodSalvage, salvage);
-    inflows.set(periodSalvage-1, inflows.get(periodSalvage-1) + salvage);
+    inflows.set(periodSalvage, inflows.get(periodSalvage) + salvage);
 
     // Calculate NetCashflow Values
-    ArrayList<Float> netCashflowValues = calcNetCash(inflows,outflows, periods);
+    ArrayList<Float> netCashflowValues = calcNetCash(inflows,outflows,principal,periods);
 
     // Calculate NetPresValue per Period
     ArrayList<Float> netPresValuePeriod = calcNetPresValuePeriod(netCashflowValues, interest, tax);
@@ -74,7 +78,7 @@ public class NPVEvaluation {
     ArrayList<Float> cumulativeCashflowValues = cumCash(netPresValuePeriod, periods);
 
     // Calculate InputNPV
-    float npv = calcNPV(periods, principal, cumulativeCashflowValues);
+    float npv = calcNPV(periods, cumulativeCashflowValues);
 
     NPVResult npvR = new NPVResult();
 

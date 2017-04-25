@@ -143,6 +143,11 @@ public class SetData {
         }
     }
 
+    public static void setNPVNetPresentValue(Scene scene, float result){
+        TextField tfResult = (TextField) scene.lookup(CNodeID.TEXTFIELD_NPV_RESULT);
+        tfResult.setText(""+result);
+    }
+
     public static void setDepreciationResults(Scene scene, DEPResult result, int startingYear){
         TableView<RowDEP> table = (TableView<RowDEP>) scene.lookup(CNodeID.TABLE_DEP);
         ObservableList<RowDEP> rows = table.getItems();

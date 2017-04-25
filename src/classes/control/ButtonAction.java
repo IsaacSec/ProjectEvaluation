@@ -9,7 +9,9 @@ import static classes.control.SetData.*;
 import static classes.control.GetData.*;
 
 public class ButtonAction {
-    public static void initPBPButtons(Scene scene){
+
+    public static void initPBPButtons(Scene scene)
+    {
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_PBP_CALCULATE);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_PBP_CLEAR);
 
@@ -17,7 +19,8 @@ public class ButtonAction {
         clear.setOnAction(e -> clearPBP(scene));
     }
 
-    private static void calculatePBP(Scene scene){
+    private static void calculatePBP(Scene scene)
+    {
         InputPBP inputPBP = getPayBackPeriodInput(scene);
         PBPResult pbpResult = PBPEvaluation.calculatePBP(inputPBP, getPBPOutflows(scene), getPBPInflows(scene));
 
@@ -26,11 +29,13 @@ public class ButtonAction {
         }
     }
 
-    private static void clearPBP(Scene scene){
+    private static void clearPBP(Scene scene)
+    {
         clearPayBackPeriod(scene);
     }
 
-    public static void initNPVButtons(Scene scene){
+    public static void initNPVButtons(Scene scene)
+    {
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_NPV_CALCULATE);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_NPV_CLEAR);
 
@@ -38,7 +43,8 @@ public class ButtonAction {
         clear.setOnAction(e -> clearNPV(scene));
     }
 
-    private static void calculateNPV(Scene scene){
+    private static void calculateNPV(Scene scene)
+    {
         InputNPV input = getNetPresentValueInput(scene);
 
         if(input != null) {
@@ -47,14 +53,17 @@ public class ButtonAction {
 
             setNPVCumulativeCashFlow(scene, result.getCumulativeCashFlowValues());
             setNPVNetCashFlow(scene, result.getNetCashFlowValues());
+            setNPVNetPresentValue(scene, result.getNetPresentValue());
         }
     }
 
-    private static void clearNPV(Scene scene){
+    private static void clearNPV(Scene scene)
+    {
         clearNetPresentValue(scene);
     }
 
-    public static void initDEPButtons(Scene scene){
+    public static void initDEPButtons(Scene scene)
+    {
         Button straightLine = (Button) scene.lookup(CNodeID.BUTTON_DEP_STRAIGHT_LINE);
         Button macrs = (Button) scene.lookup(CNodeID.BUTTON_DEP_MACRS);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_DEP_CLEAR);
@@ -64,7 +73,8 @@ public class ButtonAction {
         clear.setOnAction(event -> clearDEP(scene));
     }
 
-    private static void calculateStraightLineDEP(Scene scene){
+    private static void calculateStraightLineDEP(Scene scene)
+    {
         InputDEP input = getDepreciationInput(scene);
         if(input != null) {
             DEPResult result = DEPEvaluation.calculateStraightLine(input);
@@ -73,7 +83,8 @@ public class ButtonAction {
         }
     }
 
-    private static void calculateMACRS(Scene scene){
+    private static void calculateMACRS(Scene scene)
+    {
         InputDEP input = getDepreciationInput(scene);
         if(input != null) {
             DEPResult result = DEPEvaluation.calculateMACRS(input);
@@ -82,7 +93,8 @@ public class ButtonAction {
         }
     }
 
-    private static void clearDEP(Scene scene){
+    private static void clearDEP(Scene scene)
+    {
         clearDepreciation(scene);
     }
 }

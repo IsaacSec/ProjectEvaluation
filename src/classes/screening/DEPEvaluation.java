@@ -16,7 +16,7 @@ public class DEPEvaluation {
         ArrayList<Float> ledgerValues = new ArrayList<>();
         ArrayList<Float> taxPerYear = new ArrayList<>();
 
-        float aux, annualDep, ledgerValue, accDep, taxYear = 0, depRate = 0;
+        float aux, annualDep = 0, ledgerValue, accDep, taxYear = 0, depRate = 0;
 
         int periods = input.getPeriods();
         float principal = input.getPrincipal();
@@ -25,14 +25,12 @@ public class DEPEvaluation {
         int periodSalvage = input.getPeriodSalvage();
 
         aux = principal - salvageV;
-        annualDep = aux / periods;
         ledgerValue = principal;
         tax = tax/100;
         accDep = 0;
 
         for (int i = 0; i <= periods; i++) {
             taxYear = tax * ledgerValue;
-            depRate = annualDep/ledgerValue * 100;
 
             depreciationRate.add(depRate);
             annualDepreciation.add(annualDep);
@@ -40,6 +38,8 @@ public class DEPEvaluation {
             ledgerValues.add(ledgerValue);
             taxPerYear.add(taxYear);
 
+            annualDep = aux / periods;
+            depRate = annualDep/ledgerValue * 100;
             accDep = accDep + annualDep;
             ledgerValue = ledgerValue - annualDep;
         }
@@ -174,7 +174,7 @@ public class DEPEvaluation {
                 ledgersValues = ledgersValues - annualDep;
                 taxYear = tax * ledgersValues;
 
-                depreciationRate.add(depRate);
+                depreciationRate.add(depRate * 100);
                 annualDepreciation.add(annualDep);
                 accumulatedDepreciation.add(accDep);
                 ledgerValues.add(ledgersValues);
