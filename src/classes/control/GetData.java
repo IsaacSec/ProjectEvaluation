@@ -96,7 +96,14 @@ public class GetData {
             String category = categoryCB.getValue();
             int startingYear = Integer.parseInt(startingYearTF.getText());
 
-            dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+            if(periodSV < periods) {
+
+
+                dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+            }else {
+                displayError("Error", null,"The salvage period can't be greater than the period");
+                dep = null;
+            }
         }catch (NumberFormatException nfe){
             displayError("Error",null,"Period, Principal, Tax rate, Salvage value, salvage period and Starting year must be numbers" );
             return null;
