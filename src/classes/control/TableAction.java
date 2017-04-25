@@ -2,11 +2,13 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.config.CResource;
+import classes.pmo.ChecklistModel;
 import classes.tablemodel.RowChecklist;
 import classes.tablemodel.RowDEP;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -152,21 +154,14 @@ public class TableAction {
 
         topic.setCellValueFactory(new PropertyValueFactory<RowChecklist, String>("topic"));
         question.setCellValueFactory(new PropertyValueFactory<RowChecklist, String>("question"));
-        answer.setCellValueFactory(new PropertyValueFactory<RowChecklist, String>("answer"));
+        answer.setCellValueFactory(new PropertyValueFactory<RowChecklist, Node>("answer"));
 
-        answer.setCellFactory(TextFieldTableCell.forTableColumn());
+        //answer.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        displayChecklistResources(scene,table);
+        displayChecklistResources(scene);
     }
 
-    private static void displayChecklistResources(Scene scene, TableView<RowChecklist> table){
-        ObservableList<RowChecklist> data = table.getItems();
-        String[][] resources = CResource.checklistResources;
-
-        for(int i=0; i<resources.length; i++){
-            String topic = resources[i][0];
-            String question = resources[i][1];
-            data.add(new RowChecklist(topic, question, ""));
-        }
+    private static void displayChecklistResources(Scene scene){
+        ChecklistModel.constructCheckList(scene);
     }
 }

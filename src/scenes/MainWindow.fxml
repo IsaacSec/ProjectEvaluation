@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
@@ -342,11 +342,11 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1183.0">
                                  <children>
-                                    <TableView fx:id="ChecklistTable" editable="true" layoutX="78.0" layoutY="44.0" prefHeight="442.0" prefWidth="1039.0">
+                                    <TableView fx:id="ChecklistTable" editable="true" layoutX="56.0" layoutY="44.0" prefHeight="442.0" prefWidth="1091.0">
                                       <columns>
                                         <TableColumn prefWidth="146.0" text="Topic" />
                                         <TableColumn minWidth="0.0" prefWidth="506.0" text="Question" />
-                                          <TableColumn minWidth="0.0" prefWidth="386.0" text="Answer" />
+                                          <TableColumn minWidth="0.0" prefWidth="420.0" text="Answer" />
                                       </columns>
                                     </TableView>
                                  </children>
