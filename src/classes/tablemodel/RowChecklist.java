@@ -1,18 +1,20 @@
 package classes.tablemodel;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.Node;
+import javafx.scene.control.Control;
 
-public class RowChecklist {
+public class RowChecklist <T extends Node>{
     private SimpleStringProperty topic;
     private SimpleStringProperty question;
-    private SimpleStringProperty answer;
+    public T answer;
 
-    public RowChecklist(String topic,
-                        String question,
-                        String answer) {
+    public RowChecklist (String topic,
+                         String question,
+                         T answer) {
         this.topic = new SimpleStringProperty(topic);
         this.question = new SimpleStringProperty(question);
-        this.answer = new SimpleStringProperty(answer);
+        this.answer = answer;
     }
 
     public String getTopic() {
@@ -39,15 +41,11 @@ public class RowChecklist {
         this.question.set(question);
     }
 
-    public String getAnswer() {
-        return answer.get();
-    }
-
-    public SimpleStringProperty answerProperty() {
+    public T getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer.set(answer);
+    public void setAnswer(T answer) {
+        this.answer = answer;
     }
 }

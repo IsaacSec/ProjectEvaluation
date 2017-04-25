@@ -13,6 +13,7 @@ public class CResource {
                     {"Sponsorship", "Who is the project sponsor?"},
                     {"Risk", "What is the impact of not doing this project?"},
                     {"Risk", "What is the project risk to our organization?"},
+                    {"Risk", "Where does the proposed project fit in our risk profile?"},
                     {"Benefits, value", "What is the value of the project organization?"},
                     {"Benefits, value", "When will the project shows results?"},
                     {"Objectives", "What are the project objectives?"},
@@ -26,5 +27,23 @@ public class CResource {
                     {"Portfolio", "Is this a new initiative or path of an existing initiative?"},
                     {"Portfolio", "How does this project interact with current projects?"},
                     {"Technology", "Is the technology available or new?"}
+            };
+
+    public static final String[] checkListResourcesDriver =
+            {
+                    "None","Uncertainty","Globalization","Innovation","Government Policy & Regulation",
+                    "Technology","Diversity","Complexity","Information Overload","Supply Chains",
+                    "Strategic Thinking & Problem Solving","Other"
+            };
+
+    public static final String[] checkListResourcesSuccessMetrics =
+            {
+                    "Profitability","Return of Investment",
+                    "Delivery of Benefits","Taking advantage of windows of opportunity","Other"
+            };
+    public static final String[] checkListResourcesSchedule =
+            {
+                    "1 to 6 months","6 to 12 months","1 to 2 years","2 to 4 years",
+                    "4 to 8 years","8 to 16 years","more than 16 years"
             };
 }
