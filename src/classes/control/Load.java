@@ -23,9 +23,12 @@ public class Load {
             SetData.setPayBackPeriod(scene, str.nextToken(), str.nextToken(), str.nextToken());
             SetData.setPBPTableValues(scene,toArray(bf.readLine()),toArray(bf.readLine()));
             StringTokenizer str2 = new StringTokenizer(bf.readLine()," ");
-            SetData.setNetPresentValue(scene, str.nextToken(),str.nextToken(),str.nextToken(),str.nextToken(),str.nextToken(),str.nextToken());
+            SetData.setNetPresentValue(scene, str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken());
             SetData.setNPVTableValues(scene, toArray(bf.readLine()), toArray(bf.readLine()));
-
+            StringTokenizer str3 = new StringTokenizer(bf.readLine()," ");
+            SetData.setDepreciation(scene, str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken()+" "+str3.nextToken(),str3.nextToken());
+            ButtonAction.calculateNPV(scene);
+            ButtonAction.calculatePBP(scene);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

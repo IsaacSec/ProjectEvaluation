@@ -204,6 +204,7 @@ public class SetData {
         periodSV.setText("0");
         category.setValue("3 Years");
         startingYear.setText("0");
+
     }
 
 
@@ -229,5 +230,24 @@ public class SetData {
             row.setInflow(inflows.get(i));
             row.setOutflow(outflows.get(i));
         }
+    }
+
+    public static void setDepreciation(Scene scene, String period, String principal, String tax , String salvage, String salvagePeriod, String category, String year){
+        TextField periodsTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIODS);
+        TextField principalTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PRINCIPAL);
+        TextField taxTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_TAX_RATE);
+        TextField salvageValueTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_SALVAGE_VALUE);
+        TextField periodSVTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_PERIOD_SV);
+        ChoiceBox<String> categoryCB = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
+        TextField startingYearTF = (TextField) scene.lookup(CNodeID.TEXTFIELD_DEP_STARTING_YEAR);
+
+        periodsTF.setText(period);
+        principalTF.setText(principal);
+        taxTF.setText(tax);
+        salvageValueTF.setText(salvage);
+        periodSVTF.setText(salvagePeriod);
+        categoryCB.setValue(category);
+        startingYearTF.setText(year);
+
     }
 }

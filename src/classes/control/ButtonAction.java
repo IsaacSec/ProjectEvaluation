@@ -19,7 +19,7 @@ public class ButtonAction {
         clear.setOnAction(e -> clearPBP(scene));
     }
 
-    private static void calculatePBP(Scene scene)
+    public static void calculatePBP(Scene scene)
     {
         InputPBP inputPBP = getPayBackPeriodInput(scene);
         PBPResult pbpResult = PBPEvaluation.calculatePBP(inputPBP, getPBPOutflows(scene), getPBPInflows(scene));
@@ -45,7 +45,7 @@ public class ButtonAction {
         clear.setOnAction(e -> clearNPV(scene));
     }
 
-    private static void calculateNPV(Scene scene)
+    public static void calculateNPV(Scene scene)
     {
         InputNPV input = getNetPresentValueInput(scene);
 
