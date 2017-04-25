@@ -21,6 +21,7 @@ public class Save {
             pw.println(GetData.getNetPresentValueInput(scene).toString());
             pw.println(arrayToString(GetData.getNPVInflows(scene)));
             pw.println(arrayToString(GetData.getNPVOutflows(scene)));
+            pw.println(GetData.getDepreciationInput(scene).toString());
             pw.close();
 
         } catch (FileNotFoundException e) {
@@ -45,8 +46,8 @@ public class Save {
 
     }
     public static String arrayToString(ArrayList<Float> arrayList){
-        String string="";
-        for(int i = 0; i < arrayList.size();i++){
+        String string= arrayList.get(0)+"";
+        for(int i = 1; i < arrayList.size();i++){
             string = string+" "+arrayList.get(i);
         }
         return string;

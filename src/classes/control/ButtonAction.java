@@ -27,11 +27,13 @@ public class ButtonAction {
         if(pbpResult != null) {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
+        Save.saveAll(scene);
     }
 
     private static void clearPBP(Scene scene)
     {
-        clearPayBackPeriod(scene);
+        Load.load(scene);
+        /*clearPayBackPeriod(scene);*/
     }
 
     public static void initNPVButtons(Scene scene)

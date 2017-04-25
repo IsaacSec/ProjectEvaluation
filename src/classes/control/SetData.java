@@ -207,6 +207,27 @@ public class SetData {
     }
 
 
-    // TODO: method setEmptyPBPTableValues() that fills empty cells (PBP) with 0
-    // TODO: method setEmptyNPVTableValues() that fills empty cells (NPV) with 0
+    public static void setPBPTableValues(Scene scene, ArrayList<String> inflows, ArrayList<String> outflows){
+        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
+        ObservableList<RowPBP> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowPBP row = rows.get(i);
+            row.setInflow(inflows.get(i));
+            row.setOutflow(outflows.get(i));
+        }
+    }
+
+    public static void setNPVTableValues(Scene scene,  ArrayList<String> inflows, ArrayList<String> outflows){
+        TableView<RowNPV> table = (TableView<RowNPV>) scene.lookup(CNodeID.TABLE_NPV);
+        ObservableList<RowNPV> rows = table.getItems();
+        int size = rows.size();
+
+        for (int i=0; i<size; i++){
+            RowNPV row = rows.get(i);
+            row.setInflow(inflows.get(i));
+            row.setOutflow(outflows.get(i));
+        }
+    }
 }

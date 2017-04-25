@@ -69,6 +69,6 @@ public class InputNPV {
     }
 
     public String toString (){
-        return this.principal+" "+this.getPeriods()+" "+this.interest+" "+this.tax+" "+this.salvage+" "+this.salvagePeriod;
+        return this.periods+" "+this.principal+" "+this.interest+" "+this.tax+" "+this.salvage+" "+this.salvagePeriod;
     }
 }
