@@ -24,6 +24,7 @@ public class ButtonAction {
         if(pbpResult != null) {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
+        Save.SavePbp(scene);
     }
 
     private static void clearPBP(Scene scene){

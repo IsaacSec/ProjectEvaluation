@@ -74,4 +74,8 @@ public class InputDEP {
     public void setStartingYear(int startingYear) {
         this.startingYear = startingYear;
     }
+
+    public String toString(){
+        return this.getPeriods()+" "+this.getPrincipal()+ " "+ this.getTax() + " "+ this.getSalvage() +" " + this.getPeriodSalvage()+" "+this.getCategory()+" "+this.getStartingYear();
+    }
 }
