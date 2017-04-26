@@ -3,10 +3,8 @@ package classes.control;
 import classes.config.CNodeID;
 import classes.screening.*;
 import javafx.scene.Scene;
+import javafx.scene.chart.Chart;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
@@ -30,11 +28,14 @@ public class ButtonAction {
         if(pbpResult != null) {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
+        ChartAction.displayPBPCharts(scene);
+        Save.saveAll(scene);
     }
 
     private static void clearPBP(Scene scene)
     {
-        clearPayBackPeriod(scene);
+        Load.load(scene);
+        /*clearPayBackPeriod(scene);*/
     }
 
     public static void initNPVButtons(Scene scene)
@@ -58,6 +59,7 @@ public class ButtonAction {
             setNPVNetCashFlow(scene, result.getNetCashFlowValues());
             setNPVNetPresentValue(scene, result.getNetPresentValue());
         }
+        ChartAction.displayNPVCharts(scene);
     }
 
     private static void clearNPV(Scene scene)
@@ -84,6 +86,7 @@ public class ButtonAction {
 
             setDepreciationResults(scene, result, input.getStartingYear());
         }
+        ChartAction.displayDEPCharts(scene);
     }
 
     private static void calculateMACRS(Scene scene)
@@ -94,18 +97,11 @@ public class ButtonAction {
 
             setDepreciationResults(scene, result, input.getStartingYear());
         }
+        ChartAction.displayDEPCharts(scene);
     }
 
     private static void clearDEP(Scene scene)
     {
         clearDepreciation(scene);
-    }
-
-    public static void initMenu(Scene scene){
-        MenuBar menu = (MenuBar) scene.lookup(CNodeID.MENU_BAR);
-        Menu menuFile = menu.getMenus().get(0);
-        MenuItem menuSave = menuFile.getItems().get(2);
-        menuSave.setOnAction( e -> Save.saveAll(scene));
-
     }
 }

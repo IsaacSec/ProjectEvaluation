@@ -18,6 +18,8 @@ public class CNodeID {
     public static final String BUTTON_PBP_CALCULATE = "#PBPCalculate";
     public static final String BUTTON_PBP_CLEAR = "#PBPClear";
     public static final String TABLE_PBP_CASHFLOW = "#PBPCashFlowTable";
+    public static final String CHART_PBP_NET_CASH_FLOW = "#PBPChartNetCashFlow";
+    public static final String CHART_PBP_CUMULATIVE_CASH_FLOW = "#PBPChartCumulativeCashFlow";
 
     public static final String TEXTFIELD_NPV_PERIODS = "#NPVPeriods";
     public static final String TEXTFIELD_NPV_PRINCIPAL = "#NPVPrincipal";
@@ -29,6 +31,8 @@ public class CNodeID {
     public static final String BUTTON_NPV_CALCULATE = "#NPVCalculate";
     public static final String BUTTON_NPV_CLEAR = "#NPVClear";
     public static final String TABLE_NPV = "#NPVTable";
+    public static final String CHART_NPV_NET_CASH_FLOW = "#NPVChartNetCashFlow";
+    public static final String CHART_NPV_CUMULATIVE_CASH_FLOW = "#NPVChartCumulativeCashFlow";
 
     public static final String TEXTFIELD_DEP_PERIODS = "#DEPPeriods";
     public static final String TEXTFIELD_DEP_PRINCIPAL = "#DEPPrincipal";
@@ -41,6 +45,11 @@ public class CNodeID {
     public static final String BUTTON_DEP_MACRS = "#DEPMACRS";
     public static final String BUTTON_DEP_CLEAR = "#DEPClear";
     public static final String TABLE_DEP = "#DEPTable";
+    public static final String CHART_DEP_DEPRECIATION_RATE = "#DEPChartDepreciationRate";
+    public static final String CHART_DEP_ANNUAL_DEPRECIATION = "#DEPChartAnnualDepreciation";
+    public static final String CHART_DEP_ACCUMULATED_DEPRECIATION = "#DEPChartAccumulatedDepreciation";
+    public static final String CHART_DEP_LEDGER_VALUES = "#DEPChartLedgerValues";
+    public static final String CHART_DEP_TAX_YEAR = "#DEPChartTaxPerYear";
 
     public static final String TABLE_CHECKLIST = "#ChecklistTable";
 }
