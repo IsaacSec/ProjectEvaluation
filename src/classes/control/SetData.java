@@ -252,7 +252,7 @@ public class SetData {
     }
 
     public static void setProjectInfo(Scene scene, String nameString, String evaluationString){
-        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_PROJECT_NAME);
         TextField evaluatorName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
 
         projectName.setText(nameString);

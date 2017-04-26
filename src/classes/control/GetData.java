@@ -96,10 +96,13 @@ public class GetData {
             String category = categoryCB.getValue();
             int startingYear = Integer.parseInt(startingYearTF.getText());
 
-            if(periodSV < periods) {
-
-
-                dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+            if(periodSV <= periods ) {
+                if(startingYear <= periods){
+                    dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+                }else{
+                    displayError("Error", null,"The starting year can't be greater than the period");
+                    dep = null;
+                }
             }else {
                 displayError("Error", null,"The salvage period can't be greater than the period");
                 dep = null;
@@ -214,6 +217,13 @@ public class GetData {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+
+    }public static void displayAlert(String title, String header, String content){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public static String getProjectName(Scene scene){
@@ -224,7 +234,6 @@ public class GetData {
     }
     public static String getProjectEvaluator(Scene scene){
         TextField evaluatorName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
-        if(evaluatorName == null) System.out.println("Error");
         return evaluatorName.getText();
 
     }
