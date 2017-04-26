@@ -3,6 +3,7 @@ package classes.control;
 import classes.config.CNodeID;
 import classes.screening.*;
 import javafx.scene.Scene;
+import javafx.scene.chart.Chart;
 import javafx.scene.control.Button;
 
 import static classes.control.SetData.*;
@@ -27,7 +28,7 @@ public class ButtonAction {
         if(pbpResult != null) {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
-        GraphAction.generatePBPGraphs(scene);
+        ChartAction.displayPBPCharts(scene);
         Save.saveAll(scene);
     }
 
@@ -58,6 +59,7 @@ public class ButtonAction {
             setNPVNetCashFlow(scene, result.getNetCashFlowValues());
             setNPVNetPresentValue(scene, result.getNetPresentValue());
         }
+        ChartAction.displayNPVCharts(scene);
     }
 
     private static void clearNPV(Scene scene)
@@ -84,6 +86,7 @@ public class ButtonAction {
 
             setDepreciationResults(scene, result, input.getStartingYear());
         }
+        ChartAction.displayDEPCharts(scene);
     }
 
     private static void calculateMACRS(Scene scene)
@@ -94,6 +97,7 @@ public class ButtonAction {
 
             setDepreciationResults(scene, result, input.getStartingYear());
         }
+        ChartAction.displayDEPCharts(scene);
     }
 
     private static void clearDEP(Scene scene)

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -24,7 +26,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
@@ -121,14 +123,34 @@
                                        <children>
                                           <VBox fx:id="PBGraphs" layoutX="24.0" layoutY="42.0" prefHeight="410.0" prefWidth="366.0">
                                              <children>
-                                                <BarChart fx:id="PBPNetCashFlowGraph" title="Payback Period Graph">
-                                                  <xAxis>
-                                                    <CategoryAxis side="BOTTOM" />
-                                                  </xAxis>
-                                                  <yAxis>
-                                                    <NumberAxis side="LEFT" />
-                                                  </yAxis>
-                                                </BarChart>
+                                                <TabPane side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+                                                   <tabs>
+                                                      <Tab text="NCF">
+                                                         <content>
+                                                            <BarChart fx:id="PBPChartNetCashFlow" title="Net Cash Flow">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </BarChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="CCF">
+                                                         <content>
+                                                            <LineChart fx:id="PBPChartCumulativeCashFlow" title="Cumulative Cash Flow">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
                                              </children></VBox>
                                        </children></AnchorPane>
                                 </content>
@@ -217,14 +239,34 @@
                                        <children>
                                           <VBox fx:id="PBGraphs1" layoutX="24.0" layoutY="42.0" prefHeight="410.0" prefWidth="366.0">
                                              <children>
-                                                <BarChart title="Net Present Value Graph">
-                                                   <xAxis>
-                                                      <CategoryAxis side="BOTTOM" />
-                                                   </xAxis>
-                                                   <yAxis>
-                                                      <NumberAxis side="LEFT" />
-                                                   </yAxis>
-                                                </BarChart>
+                                                <TabPane side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+                                                   <tabs>
+                                                      <Tab text="NCF">
+                                                         <content>
+                                                            <BarChart fx:id="NPVChartNetCashFlow" title="Net Cash Flow">
+                                                               <xAxis>
+                                                                  <CategoryAxis side="BOTTOM" />
+                                                               </xAxis>
+                                                               <yAxis>
+                                                                  <NumberAxis side="LEFT" />
+                                                               </yAxis>
+                                                            </BarChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="CCF">
+                                                         <content>
+                                                            <LineChart fx:id="NPVChartCumulativeCashFlow" title="Cumulative Cash Flow">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
                                              </children>
                                           </VBox>
                                        </children>
@@ -318,14 +360,70 @@
                                        <children>
                                           <VBox fx:id="PBGraphs11" layoutX="24.0" layoutY="42.0" prefHeight="410.0" prefWidth="366.0">
                                              <children>
-                                                <BarChart title="Net Present Value Graph">
-                                                   <xAxis>
-                                                      <CategoryAxis side="BOTTOM" />
-                                                   </xAxis>
-                                                   <yAxis>
-                                                      <NumberAxis side="LEFT" />
-                                                   </yAxis>
-                                                </BarChart>
+                                                <TabPane side="BOTTOM" tabClosingPolicy="UNAVAILABLE">
+                                                   <tabs>
+                                                      <Tab text="DR">
+                                                         <content>
+                                                            <LineChart fx:id="DEPChartDepreciationRate" title="Depreciation Rate">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="AD">
+                                                         <content>
+                                                            <LineChart fx:id="DEPChartAnnualDepreciation" title="Annual Depreciation">
+                                                               <xAxis>
+                                                                  <CategoryAxis side="BOTTOM" />
+                                                               </xAxis>
+                                                               <yAxis>
+                                                                  <NumberAxis side="LEFT" />
+                                                               </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="ACD">
+                                                         <content>
+                                                            <LineChart fx:id="DEPChartAccumulatedDepreciation" title="Accumulated Depreciation">
+                                                               <xAxis>
+                                                                  <CategoryAxis side="BOTTOM" />
+                                                               </xAxis>
+                                                               <yAxis>
+                                                                  <NumberAxis side="LEFT" />
+                                                               </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="LV">
+                                                         <content>
+                                                            <AreaChart fx:id="DEPChartLedgerValues" title="Ledger Values">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </AreaChart>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="TY">
+                                                         <content>
+                                                            <LineChart fx:id="DEPChartTaxPerYear" title="Tax per Year">
+                                                              <xAxis>
+                                                                <CategoryAxis side="BOTTOM" />
+                                                              </xAxis>
+                                                              <yAxis>
+                                                                <NumberAxis side="LEFT" />
+                                                              </yAxis>
+                                                            </LineChart>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
                                              </children>
                                           </VBox>
                                        </children>
