@@ -1,6 +1,8 @@
 package classes.control;
 
 import classes.config.CNodeID;
+import classes.tablemodel.RowDEP;
+import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.scene.Scene;
 
@@ -21,6 +23,8 @@ public class Load {
         String projectName =  GetData.getProjectName(scene);
         try {
             javafx.scene.control.TableView<RowPBP> table = (javafx.scene.control.TableView<RowPBP>) scene.lookup((CNodeID.TABLE_PBP_CASHFLOW));
+            javafx.scene.control.TableView<RowNPV> tableNpv = (javafx.scene.control.TableView<RowNPV>) scene.lookup((CNodeID.TABLE_NPV));
+            javafx.scene.control.TableView<RowDEP> tableDep = (javafx.scene.control.TableView<RowDEP>) scene.lookup((CNodeID.TABLE_DEP));
             FileReader fileReader = new FileReader(projectName+".txt");
             BufferedReader bf = new BufferedReader(fileReader);
             StringTokenizer stringTokenizer = new StringTokenizer(bf.readLine()," ");
@@ -31,14 +35,19 @@ public class Load {
             SetData.setPBPTableValues(scene,toArray(bf.readLine()),toArray(bf.readLine()));
             StringTokenizer str2 = new StringTokenizer(bf.readLine()," ");
             SetData.setNetPresentValue(scene, str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken(),str2.nextToken());
+            TableAction.displayNPVRows(scene,tableNpv);
             SetData.setNPVTableValues(scene, toArray(bf.readLine()), toArray(bf.readLine()));
             StringTokenizer str3 = new StringTokenizer(bf.readLine()," ");
             SetData.setDepreciation(scene, str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken()+" "+str3.nextToken(),str3.nextToken());
-            /*ButtonAction.calculateNPV(scene);*/
+            TableAction.displayDEPRows(scene,tableDep);
+
+            ButtonAction.calculateNPV(scene);
             ButtonAction.calculatePBP(scene);
+            GetData.displayAlert("Load successful",null,"The project "+projectName+" was successfully loaded");
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            GetData.displayError("Error","File not found", "Please make sure the project name is correct");
+           // e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

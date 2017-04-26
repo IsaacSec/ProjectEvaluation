@@ -135,7 +135,6 @@ public class TableAction {
         }catch (NumberFormatException nfe){
             return;
         }
-        System.out.println(periods);
         for(int i=data.size(); i<= periods && i <= ROW_LIMIT; i++){
             data.add(new RowDEP(""+(i),"","","","","",""));
         }

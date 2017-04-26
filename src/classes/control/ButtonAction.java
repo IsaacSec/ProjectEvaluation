@@ -32,13 +32,11 @@ public class ButtonAction {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
         ChartAction.displayPBPCharts(scene);
-        Save.saveAll(scene);
     }
 
     private static void clearPBP(Scene scene)
     {
-        Load.load(scene);
-        /*clearPayBackPeriod(scene);*/
+        clearPayBackPeriod(scene);
     }
 
     public static void initNPVButtons(Scene scene)
@@ -111,8 +109,22 @@ public class ButtonAction {
     public static void initMenu(Scene scene){
         MenuBar menu = (MenuBar) scene.lookup(CNodeID.MENU_BAR);
         Menu menuFile = menu.getMenus().get(0);
+        MenuItem menuNew = menuFile.getItems().get(0);
+        MenuItem menuOpen = menuFile.getItems().get(1);
         MenuItem menuSave = menuFile.getItems().get(2);
+        MenuItem menuClose = menuFile.getItems().get(3);
+
+        menuNew.setOnAction( e ->clearAll(scene) );
+        menuOpen.setOnAction(e -> Load.load(scene));
         menuSave.setOnAction( e -> Save.saveAll(scene));
+        menuClose.setOnAction( e -> clearAll(scene));
+
+    }
+    public static void clearAll(Scene scene){
+        clearDEP(scene);
+        clearNPV(scene);
+        clearPBP(scene);
+        SetData.setProjectInfo(scene,"","");
 
     }
 }

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class Save {
 
     public static int saveAll(Scene scene){
-        System.out.println("Save all");
         String projectName =  GetData.getProjectName(scene);
         if(projectName.isEmpty()){
             GetData.displayError("Error",null,"The project must have a name");
@@ -30,6 +29,7 @@ public class Save {
                 pw.println(arrayToString(GetData.getNPVOutflows(scene)));
                 pw.println(GetData.getDepreciationInput(scene).toString());
                 pw.close();
+                GetData.displayAlert("Save successful",null,"The project "+projectName+" was successfully saved");
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -41,18 +41,7 @@ public class Save {
             return 0;
         }
     }
-    //Save all the NPV values
-    public static void SaveNpv(Scene scene){
-        InputNPV inputNPV = GetData.getNetPresentValueInput(scene);
-        System.out.println(inputNPV.toString());
 
-    }
-    //Save all the PBP values
-    public static void SavePbp(Scene scene){
-        InputPBP inputPBP = GetData.getPayBackPeriodInput(scene);
-        System.out.println(inputPBP.toString());
-
-    }
     public static String arrayToString(ArrayList<Float> arrayList){
         String string= arrayList.get(0)+"";
         for(int i = 1; i < arrayList.size();i++){
