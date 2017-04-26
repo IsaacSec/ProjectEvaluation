@@ -5,6 +5,9 @@ import classes.screening.*;
 import javafx.scene.Scene;
 import javafx.scene.chart.Chart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
@@ -103,5 +106,13 @@ public class ButtonAction {
     private static void clearDEP(Scene scene)
     {
         clearDepreciation(scene);
+    }
+
+    public static void initMenu(Scene scene){
+        MenuBar menu = (MenuBar) scene.lookup(CNodeID.MENU_BAR);
+        Menu menuFile = menu.getMenus().get(0);
+        MenuItem menuSave = menuFile.getItems().get(2);
+        menuSave.setOnAction( e -> Save.saveAll(scene));
+
     }
 }
