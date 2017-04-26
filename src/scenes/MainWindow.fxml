@@ -28,13 +28,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar>
+      <MenuBar fx:id="MenuBar">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open" />
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="FileNew" mnemonicParsing="false" text="New" />
+                  <MenuItem fx:id="FileOpen" mnemonicParsing="false" text="Open" />
+              <MenuItem fx:id="FileSave" mnemonicParsing="false" text="Save" />
+                  <MenuItem fx:id="FileClose" mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -63,8 +64,8 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="676.0" layoutY="24.0" prefHeight="25.0" prefWidth="255.0" />
-                  <TextField layoutX="676.0" layoutY="60.0" prefHeight="25.0" prefWidth="255.0" />
+                  <TextField fx:id="ProjectName" layoutX="676.0" layoutY="24.0" prefHeight="25.0" prefWidth="255.0" />
+                  <TextField fx:id="EvaluatorName" layoutX="676.0" layoutY="60.0" prefHeight="25.0" prefWidth="255.0" />
                </children>
             </AnchorPane>
             <TabPane prefHeight="542.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="160.0" VBox.vgrow="ALWAYS">
