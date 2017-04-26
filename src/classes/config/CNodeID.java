@@ -9,6 +9,7 @@ public class CNodeID {
     public static final String BUTTON_PBP_CALCULATE = "#PBPCalculate";
     public static final String BUTTON_PBP_CLEAR = "#PBPClear";
     public static final String TABLE_PBP_CASHFLOW = "#PBPCashFlowTable";
+    public static final String GRAPH_PBP_NET_CASH_FLOW = "#PBPNetCashFlowGraph";
 
     public static final String TEXTFIELD_NPV_PERIODS = "#NPVPeriods";
     public static final String TEXTFIELD_NPV_PRINCIPAL = "#NPVPrincipal";

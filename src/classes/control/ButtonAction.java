@@ -27,6 +27,7 @@ public class ButtonAction {
         if(pbpResult != null) {
             setCumulativeCashFlow(scene, pbpResult.getCumulativeCashFlow());
         }
+        GraphAction.generatePBPGraphs(scene);
         Save.saveAll(scene);
     }
 

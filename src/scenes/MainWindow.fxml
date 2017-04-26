@@ -121,7 +121,7 @@
                                        <children>
                                           <VBox fx:id="PBGraphs" layoutX="24.0" layoutY="42.0" prefHeight="410.0" prefWidth="366.0">
                                              <children>
-                                                <BarChart title="Payback Period Graph">
+                                                <BarChart fx:id="PBPNetCashFlowGraph" title="Payback Period Graph">
                                                   <xAxis>
                                                     <CategoryAxis side="BOTTOM" />
                                                   </xAxis>
