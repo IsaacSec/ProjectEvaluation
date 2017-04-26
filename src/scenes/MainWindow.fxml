@@ -456,7 +456,10 @@
                   </Tab>
                   <Tab text="Project Screening Matrix">
                      <content>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" />
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <AnchorPane prefHeight="607.0" prefWidth="1195.0" />
+                           </content></ScrollPane>
                      </content>
                   </Tab>
               </tabs>

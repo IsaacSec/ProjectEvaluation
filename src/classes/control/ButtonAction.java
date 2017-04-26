@@ -2,8 +2,8 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.screening.*;
+import classes.utils.ImageGenerator;
 import javafx.scene.Scene;
-import javafx.scene.chart.Chart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -113,6 +113,5 @@ public class ButtonAction {
         Menu menuFile = menu.getMenus().get(0);
         MenuItem menuSave = menuFile.getItems().get(2);
         menuSave.setOnAction( e -> Save.saveAll(scene));
-
     }
 }
