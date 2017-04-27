@@ -36,8 +36,8 @@ public class ImageGenerator {
 
         System.out.println("Size "+ccf.getData().get(0).getData().size());
 
-        generatePngFromLineChart(scene, ccf, path, "PBP-CCF");
-        generatePngFromBarChart(scene, ncf, path, "PBP-NCF");
+        generatePngFromLineChart(scene, ccf, path, "PBP_CCF");
+        generatePngFromBarChart(scene, ncf, path, "PBP_NCF");
 
     }
 
@@ -50,8 +50,8 @@ public class ImageGenerator {
         File file = new File(path);
         file.mkdir();
 
-        generatePngFromLineChart(scene, ccf, path, "NPV-CCF");
-        generatePngFromBarChart(scene, ncf, path, "NPV-NCF");
+        generatePngFromLineChart(scene, ccf, path, "NPV_CCF");
+        generatePngFromBarChart(scene, ncf, path, "NPV_NCF");
     }
 
     public static void generateDEPChartImages(Scene scene){

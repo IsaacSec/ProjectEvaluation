@@ -80,7 +80,7 @@ public class Depre {
         datos=datos+"_"+result;
         //pdf.writePDF(datos);
         //pdf_payBack.writePDF(datos);
-        pdf_netPresent.writePDF(datos);
+        //pdf_netPresent.writePDF(scene,datos);
         
        
         System.out.println(result);
