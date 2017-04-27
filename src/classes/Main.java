@@ -4,6 +4,7 @@ import classes.config.CNodeID;
 import classes.config.CResource;
 import classes.config.CWindow;
 import classes.control.ButtonAction;
+import classes.control.ScreeningMatrixControl;
 import classes.control.SetData;
 import classes.control.TableAction;
 import javafx.application.Application;
@@ -45,6 +46,9 @@ public class Main extends Application {
         SetData.clearDepreciation(scene);
         SetData.clearNetPresentValue(scene);
         SetData.clearPayBackPeriod(scene);
+
+        ScreeningMatrixControl screeningMatrix = new ScreeningMatrixControl(scene);
+        screeningMatrix.initComboBoxes();
     }
 
     public static void main(String[] args)
