@@ -102,4 +102,5 @@ public class ChecklistModel {
         RowChecklist FP1 = new RowChecklist(resources[16][0],resources[16][1], cbFP1);
         data.add(FP1);
     }
+
 }

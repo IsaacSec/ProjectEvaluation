@@ -28,6 +28,7 @@ public class Save {
                 pw.println(arrayToString(GetData.getNPVInflows(scene)));
                 pw.println(arrayToString(GetData.getNPVOutflows(scene)));
                 pw.println(GetData.getDepreciationInput(scene).toString());
+                pw.println(GetData.getChecklist(scene).toString());
                 pw.close();
                 GetData.displayAlert("Save successful",null,"The project "+projectName+" was successfully saved");
 

@@ -1,6 +1,9 @@
 package classes.control;
 
 import classes.config.CNodeID;
+import classes.pmo.CheckListResult;
+import classes.pmo.ChecklistModel;
+import classes.tablemodel.RowChecklist;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
@@ -236,5 +239,29 @@ public class GetData {
         TextField evaluatorName = (TextField) scene.lookup(CNodeID.TEXTFIELD_EVALUATOR_NAME);
         return evaluatorName.getText();
 
+    }
+    public static CheckListResult  getChecklist(Scene scene) {
+        TableView<RowChecklist> table = (TableView<RowChecklist>) scene.lookup(CNodeID.TABLE_CHECKLIST);
+        ObservableList<RowChecklist> rows = table.getItems();
+        TextField text1 = (TextField) rows.get(0).getAnswer();
+        ChoiceBox<String> choice1 = (ChoiceBox<String>) rows.get(1).getAnswer();
+        ChoiceBox<String> choice2 = (ChoiceBox<String>) rows.get(2).getAnswer();
+        TextField text2 = (TextField) rows.get(3).getAnswer();
+        TextField text3 = (TextField) rows.get(4).getAnswer();
+        TextField text4 = (TextField) rows.get(5).getAnswer();
+        TextField text5 = (TextField) rows.get(6).getAnswer();
+        TextField text6 = (TextField) rows.get(7).getAnswer();
+        DatePicker datePicker = (DatePicker) rows.get(8).getAnswer();
+        TextArea textArea = (TextArea) rows.get(9).getAnswer();
+        ComboBox<String> choice3 = (ComboBox<String>) rows.get(10).getAnswer();
+        ChoiceBox<String> choice4 = (ChoiceBox<String>) rows.get(11).getAnswer();
+        ChoiceBox<String> choice5 = (ChoiceBox<String>) rows.get(12).getAnswer();
+        ChoiceBox<String> choice6 = (ChoiceBox<String>) rows.get(13).getAnswer();
+        ChoiceBox<String> choice7 = (ChoiceBox<String>) rows.get(14).getAnswer();
+        ChoiceBox<String> choice8 = (ChoiceBox<String>) rows.get(15).getAnswer();
+        ChoiceBox<String> choice9 = (ChoiceBox<String>) rows.get(16).getAnswer();
+
+        CheckListResult checkListResult = new CheckListResult(text1.getText(), choice1.getValue(),choice2.getValue(),text2.getText(),text3.getText(),text4.getText(),text5.getText(),text6.getText(),datePicker.getValue().toString(),textArea.getText(),choice3.getValue(),choice4.getValue(),choice5.getValue(),choice6.getValue(),choice7.getValue(),choice8.getValue(),choice9.getValue());
+        return checkListResult;
     }
 }
