@@ -29,21 +29,22 @@ public class Save {
                 pw.println(arrayToString(GetData.getNPVOutflows(scene)));
                 pw.println(GetData.getDepreciationInput(scene).toString());
                 pw.println(GetData.getChecklist(scene).toString());
+                pw.println(ScreeningMatrixControl.matrixString());
                 pw.close();
                 GetData.displayAlert("Save successful",null,"The project "+projectName+" was successfully saved");
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
+                GetData.displayError("Error","Save Error", "Can't save unfinished project");
+            }catch (IndexOutOfBoundsException e) {
+                GetData.displayError("Error","Save Error", "Can't save unfinished project");
             }
-       /* SaveNpv(scene);
-        SavePbp(scene);*/
             return 0;
         }
     }
 
-    public static String arrayToString(ArrayList<Float> arrayList){
+    public static String arrayToString(ArrayList<Float> arrayList)throws IndexOutOfBoundsException{
         String string= arrayList.get(0)+"";
         for(int i = 1; i < arrayList.size();i++){
             string = string+" "+arrayList.get(i);
