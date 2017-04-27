@@ -8,6 +8,7 @@ import classes.control.GetData;
 import classes.control.SetData;
 import classes.tablemodel.RowPBP;
 import classes.control.TableAction;
+import classes.utils.ImageGenerator;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -60,12 +61,7 @@ public class Example extends Application{
         SetData.clearNetPresentValue(scene);
         SetData.clearPayBackPeriod(scene);
 
-
-        LineChart<String,Number> chart = (LineChart<String,Number>) scene.lookup(CNodeID.CHART_PBP_CUMULATIVE_CASH_FLOW);
-        //Scene graph = new Scene(chart.getParent());
-        LineChart newChart = new LineChart(chart.getXAxis(),chart.getYAxis(),chart.getData());
-        Scene graph = new Scene(newChart);
-        saveAsPng(graph, "graph.png");
+        ImageGenerator.generateSceneCharts(scene, "test/");
     }
 
     public void saveAsPng(Scene scene, String path) {
