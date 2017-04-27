@@ -31,10 +31,15 @@ public class GetData {
 
         if(!periods.getText().isEmpty()&& !principal.getText().isEmpty()) {
             if(interest.getText().isEmpty())interest.setText("0");
-            try {
-                pbp = new InputPBP(Integer.parseInt(periods.getText()), Float.parseFloat(principal.getText()), Float.parseFloat(interest.getText()));
-            }catch (NumberFormatException nfe){
-                displayError("Error",null,"The Period, Principal and Interest rate must be numbers" );
+            if(Float.parseFloat(interest.getText()) <= 100 && Float.parseFloat(interest.getText()) >= 0 ) {
+                try {
+                    pbp = new InputPBP(Integer.parseInt(periods.getText()), Float.parseFloat(principal.getText()), Float.parseFloat(interest.getText()));
+                } catch (NumberFormatException nfe) {
+                    displayError("Error", null, "The Period, Principal and Interest rate must be numbers");
+                    pbp = null;
+                }
+            }else{
+                displayError("Error",null,"The Interest must be between 0 and 100" );
                 pbp = null;
             }
         }else{
@@ -65,11 +70,28 @@ public class GetData {
             float salv = Float.parseFloat(salvage.getText());
             int salvp = Integer.parseInt(salvagePeriod.getText());
 
-            if (salvp > per){
-                displayError("Error",null,"The salvage period can't be greater than the period" );
-                npv = null;
+            if (salvp > per || salvp < 0){
+                if (salvp > per) {
+                    displayError("Error", null, "The salvage period can't be greater than the period");
+                    npv = null;
+                }else if(salvp < 0){
+                    displayError("Error", null, "The salvage period can't be negative");
+                    npv=null;
+                }else{
+                    npv=null;
+                }
             }else {
-                npv = new InputNPV(per, pri, inte, taxes, salv, salvp);
+                if(inte <= 100 && inte>= 0 ) {
+                    if(taxes <= 100 && taxes>= 0 ) {
+                        npv = new InputNPV(per, pri, inte, taxes, salv, salvp);
+                    }else {
+                        displayError("Error", null, "The Interest rate must be between 0 and 100");
+                        npv=null;
+                    }
+                }else{
+                    displayError("Error", null, "The Tax rate must be between 0 and 100");
+                    npv=null;
+                }
             }
 
         }catch (NumberFormatException nfe){
@@ -100,8 +122,13 @@ public class GetData {
             int startingYear = Integer.parseInt(startingYearTF.getText());
 
             if(periodSV <= periods ) {
+                if(tax<= 100 && tax >= 0 ) {
 
-                dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+                    dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+                }else{
+                    displayError("Error", null, "The Tax rate must be between 0 and 100");
+                    dep=null;
+                }
 
             }else {
                 displayError("Error", null,"The salvage period can't be greater than the period");
