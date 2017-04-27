@@ -42,7 +42,7 @@ public class Load {
             TableAction.displayDEPRows(scene,tableDep);
             StringTokenizer str4 = new StringTokenizer(bf.readLine(),"*");
             SetData.setCheckList(scene,str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken());
-
+            ScreeningMatrixControl.setMatrixString(bf.readLine());
             bf.close();
             ButtonAction.calculateNPV(scene);
             ButtonAction.calculatePBP(scene);

@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 /**
@@ -41,9 +42,9 @@ public class ScreeningMatrixControl {
     private Label decision;
     private Button analyse;
 
-    private Vector<ComboBox> ratingA;
-    private Vector<ComboBox> ratingB;
-    private Vector<ComboBox> ratingC;
+    private static Vector<ComboBox> ratingA;
+    private static Vector<ComboBox> ratingB;
+    private static Vector<ComboBox> ratingC;
 
     private Vector<Label> weightingA;
     private Vector<Label> weightingB;
@@ -437,7 +438,7 @@ public class ScreeningMatrixControl {
         this.analyse = analyse;
     }
 
-    public Vector<ComboBox> getRatingA() {
+    public static Vector<ComboBox> getRatingA() {
         return ratingA;
     }
 
@@ -445,7 +446,7 @@ public class ScreeningMatrixControl {
         this.ratingA = ratingA;
     }
 
-    public Vector<ComboBox> getRatingB() {
+    public static Vector<ComboBox> getRatingB() {
         return ratingB;
     }
 
@@ -453,7 +454,7 @@ public class ScreeningMatrixControl {
         this.ratingB = ratingB;
     }
 
-    public Vector<ComboBox> getRatingC() {
+    public static Vector<ComboBox> getRatingC() {
         return ratingC;
     }
 
@@ -507,5 +508,29 @@ public class ScreeningMatrixControl {
 
     public void setWeightedValueC(Vector<Label> weightedValueC) {
         this.weightedValueC = weightedValueC;
+    }
+
+    public static String matrixString(){
+        String value="";
+        for(int i = 0; i < getRatingA().size();i++){
+            value += getRatingA().get(i).getValue()+" ";
+        }
+        for(int i = 0; i < getRatingB().size();i++){
+            value += getRatingB().get(i).getValue()+" ";
+        }for(int i = 0; i < getRatingC().size();i++){
+            value += getRatingC().get(i).getValue()+" ";
+        }
+        return value;
+    }
+    public static void setMatrixString(String str){
+        StringTokenizer strTok = new StringTokenizer(str," ");
+        for(int i = 0; i < getRatingA().size();i++){
+            getRatingA().get(i).setValue(strTok.nextToken());
+        }
+        for(int i = 0; i < getRatingB().size();i++){
+            getRatingB().get(i).setValue(strTok.nextToken());
+        }for(int i = 0; i < getRatingC().size();i++){
+            getRatingC().get(i).setValue(strTok.nextToken());
+        }
     }
 }
