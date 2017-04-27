@@ -46,6 +46,8 @@ public class Load {
             bf.close();
             ButtonAction.calculateNPV(scene);
             ButtonAction.calculatePBP(scene);
+            ScreeningMatrixControl matrixControl =  new ScreeningMatrixControl(scene);
+            matrixControl.analyse();
             GetData.displayAlert("Load successful",null,"The project "+projectName+" was successfully loaded");
 
         } catch (FileNotFoundException e) {

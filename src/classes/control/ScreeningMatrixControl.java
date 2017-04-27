@@ -2,7 +2,6 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.config.CResource;
-import com.sun.jndi.cosnaming.CNCtx;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -16,13 +15,13 @@ import java.util.Vector;
  * Created by isaac on 4/26/17.
  */
 public class ScreeningMatrixControl {
-    private TextField weightingTotalA;
+    private static TextField weightingTotalA;
     private Label totalA;
     private Label weightedTotalA;
-    private TextField weightingTotalB;
+    private static TextField weightingTotalB;
     private Label totalB;
     private Label weightedTotalB;
-    private TextField weightingTotalC;
+    private static TextField weightingTotalC;
     private Label totalC;
     private Label weightedTotalC;
 
@@ -35,9 +34,9 @@ public class ScreeningMatrixControl {
     private Label subtotalWeightedValueC;
     private Label subtotalGrandTotalWeightedValue;
 
-    private TextField decisionNo;
-    private TextField decisionCanConsider;
-    private TextField decisionYes;
+    private static TextField decisionNo;
+    private static TextField decisionCanConsider;
+    private static TextField decisionYes;
 
     private Label decision;
     private Button analyse;
@@ -183,7 +182,7 @@ public class ScreeningMatrixControl {
         analyse.setOnAction(event -> analyse());
     }
 
-    private void analyse(){
+    public void analyse(){
         calculateTotals();
         calculateSubTotals();
         takeDecision();
@@ -262,7 +261,7 @@ public class ScreeningMatrixControl {
         decision.setText(decisionResult);
     }
 
-    public TextField getWeightingTotalA() {
+    public static TextField getWeightingTotalA() {
         return weightingTotalA;
     }
 
@@ -286,7 +285,7 @@ public class ScreeningMatrixControl {
         this.weightedTotalA = weightedTotalA;
     }
 
-    public TextField getWeightingTotalB() {
+    public static TextField getWeightingTotalB() {
         return weightingTotalB;
     }
 
@@ -310,7 +309,7 @@ public class ScreeningMatrixControl {
         this.weightedTotalB = weightedTotalB;
     }
 
-    public TextField getWeightingTotalC() {
+    public static TextField getWeightingTotalC() {
         return weightingTotalC;
     }
 
@@ -398,7 +397,7 @@ public class ScreeningMatrixControl {
         this.subtotalGrandTotalWeightedValue = subtotalGrandTotalWeightedValue;
     }
 
-    public TextField getDecisionNo() {
+    public static TextField getDecisionNo() {
         return decisionNo;
     }
 
@@ -406,7 +405,7 @@ public class ScreeningMatrixControl {
         this.decisionNo = decisionNo;
     }
 
-    public TextField getDecisionCanConsider() {
+    public static TextField getDecisionCanConsider() {
         return decisionCanConsider;
     }
 
@@ -414,7 +413,7 @@ public class ScreeningMatrixControl {
         this.decisionCanConsider = decisionCanConsider;
     }
 
-    public TextField getDecisionYes() {
+    public static TextField getDecisionYes() {
         return decisionYes;
     }
 
@@ -520,6 +519,8 @@ public class ScreeningMatrixControl {
         }for(int i = 0; i < getRatingC().size();i++){
             value += getRatingC().get(i).getValue()+" ";
         }
+        value += getWeightingTotalA().getText()+" "+getWeightingTotalB().getText()+" "+ getWeightingTotalC().getText();
+        value += getDecisionNo().getText()+" "+getDecisionCanConsider().getText()+" "+getDecisionYes().getText();
         return value;
     }
     public static void setMatrixString(String str){
@@ -532,5 +533,13 @@ public class ScreeningMatrixControl {
         }for(int i = 0; i < getRatingC().size();i++){
             getRatingC().get(i).setValue(strTok.nextToken());
         }
+        getWeightingTotalA().setText(strTok.nextToken());
+        getWeightingTotalB().setText(strTok.nextToken());
+        getWeightingTotalC().setText(strTok.nextToken());
+        getDecisionNo().setText(strTok.nextToken());
+        getDecisionCanConsider().setText(strTok.nextToken());
+        getDecisionYes().setText(strTok.nextToken());
+
+
     }
 }
