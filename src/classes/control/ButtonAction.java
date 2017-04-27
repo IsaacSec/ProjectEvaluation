@@ -3,12 +3,11 @@ package classes.control;
 import classes.config.CNodeID;
 import classes.screening.*;
 import javafx.scene.Scene;
-import javafx.scene.chart.Chart;
 import javafx.scene.control.*;
 
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
-import static classes.utils.PDFGenerator.*;
+import static classes.utils.ReportGenerator.*;
 
 public class ButtonAction {
 
@@ -43,9 +42,11 @@ public class ButtonAction {
     {
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_NPV_CALCULATE);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_NPV_CLEAR);
+        Button report = (Button) scene.lookup(CNodeID.BUTTON_NPV_GENERATE_REPORT);
 
         calculate.setOnAction(e -> calculateNPV(scene));
         clear.setOnAction(e -> clearNPV(scene));
+        report.setOnAction(e -> generateNPVReport(scene));
     }
 
     public static void calculateNPV(Scene scene)
@@ -73,10 +74,12 @@ public class ButtonAction {
         Button straightLine = (Button) scene.lookup(CNodeID.BUTTON_DEP_STRAIGHT_LINE);
         Button macrs = (Button) scene.lookup(CNodeID.BUTTON_DEP_MACRS);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_DEP_CLEAR);
+        Button report = (Button) scene.lookup(CNodeID.BUTTON_DEP_GENERATE_REPORT);
 
         straightLine.setOnAction(event -> calculateStraightLineDEP(scene));
         macrs.setOnAction(event -> calculateMACRS(scene));
         clear.setOnAction(event -> clearDEP(scene));
+        report.setOnAction(e -> generateDEPReport(scene));
     }
 
     private static void calculateStraightLineDEP(Scene scene)
