@@ -100,12 +100,9 @@ public class GetData {
             int startingYear = Integer.parseInt(startingYearTF.getText());
 
             if(periodSV <= periods ) {
-                if(startingYear <= periods){
-                    dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
-                }else{
-                    displayError("Error", null,"The starting year can't be greater than the period");
-                    dep = null;
-                }
+
+                dep = new InputDEP(periods, principal, tax, salvageValue, periodSV, category, startingYear);
+
             }else {
                 displayError("Error", null,"The salvage period can't be greater than the period");
                 dep = null;
@@ -244,8 +241,8 @@ public class GetData {
         TableView<RowChecklist> table = (TableView<RowChecklist>) scene.lookup(CNodeID.TABLE_CHECKLIST);
         ObservableList<RowChecklist> rows = table.getItems();
         TextField text1 = (TextField) rows.get(0).getAnswer();
-        ChoiceBox<String> choice1 = (ChoiceBox<String>) rows.get(1).getAnswer();
-        ChoiceBox<String> choice2 = (ChoiceBox<String>) rows.get(2).getAnswer();
+        ComboBox<String> choice1 = (ComboBox<String>) rows.get(1).getAnswer();
+        ComboBox<String> choice2 = (ComboBox<String>) rows.get(2).getAnswer();
         TextField text2 = (TextField) rows.get(3).getAnswer();
         TextField text3 = (TextField) rows.get(4).getAnswer();
         TextField text4 = (TextField) rows.get(5).getAnswer();
@@ -254,12 +251,12 @@ public class GetData {
         DatePicker datePicker = (DatePicker) rows.get(8).getAnswer();
         TextArea textArea = (TextArea) rows.get(9).getAnswer();
         ComboBox<String> choice3 = (ComboBox<String>) rows.get(10).getAnswer();
-        ChoiceBox<String> choice4 = (ChoiceBox<String>) rows.get(11).getAnswer();
-        ChoiceBox<String> choice5 = (ChoiceBox<String>) rows.get(12).getAnswer();
-        ChoiceBox<String> choice6 = (ChoiceBox<String>) rows.get(13).getAnswer();
-        ChoiceBox<String> choice7 = (ChoiceBox<String>) rows.get(14).getAnswer();
-        ChoiceBox<String> choice8 = (ChoiceBox<String>) rows.get(15).getAnswer();
-        ChoiceBox<String> choice9 = (ChoiceBox<String>) rows.get(16).getAnswer();
+        ComboBox<String> choice4 = (ComboBox<String>) rows.get(11).getAnswer();
+        ComboBox<String> choice5 = (ComboBox<String>) rows.get(12).getAnswer();
+        ComboBox<String> choice6 = (ComboBox<String>) rows.get(13).getAnswer();
+        ComboBox<String> choice7 = (ComboBox<String>) rows.get(14).getAnswer();
+        ComboBox<String> choice8 = (ComboBox<String>) rows.get(15).getAnswer();
+        ComboBox<String> choice9 = (ComboBox<String>) rows.get(16).getAnswer();
 
         CheckListResult checkListResult = new CheckListResult(text1.getText(), choice1.getValue(),choice2.getValue(),text2.getText(),text3.getText(),text4.getText(),text5.getText(),text6.getText(),datePicker.getValue().toString(),textArea.getText(),choice3.getValue(),choice4.getValue(),choice5.getValue(),choice6.getValue(),choice7.getValue(),choice8.getValue(),choice9.getValue());
         return checkListResult;
