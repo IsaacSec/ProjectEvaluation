@@ -10,14 +10,25 @@ import classes.tablemodel.RowPBP;
 import classes.control.TableAction;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Tab;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 //
 import javafx.scene.control.TableView;
+
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
 public class Example extends Application{
 
@@ -30,53 +41,45 @@ public class Example extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        ChoiceBox<String> category = (ChoiceBox<String>) scene.lookup(CNodeID.COMBOBOX_DEP_CATEGORY);
+        category.getItems().addAll("3 Years","5 Years","7 Years","10 Years","15 Years","20 Years");
+        category.setValue("3 Years");
 
-        SetData setData = new SetData();
-        setData.setPayBackPeriod(scene,"0","0","0");
-        /*
-        Label l = (Label)scene.lookup(CNodeID.LABEL_SYSTEM_MESSAGE);
-
-        l.setTooltip(
-                new Tooltip("This is where the feedback will be displayed.")
-        );
-
-        TextField erik = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PRINCIPAL);
-        erik.setText("Holas erikson");
-        */
-
-        Button b = (Button) scene.lookup(CNodeID.BUTTON_PBP_CALCULATE);
-        b.setOnAction( e -> calculate(scene));
-
-        Button b1 = (Button) scene.lookup(CNodeID.BUTTON_PBP_CLEAR);
-        b1.setOnAction( e -> clear(scene));
 
         TableAction.initTablePBP(scene);
         TableAction.initTableNPV(scene);
         TableAction.initTableDEP(scene);
         TableAction.initTableChecklist(scene);
+
         ButtonAction.initPBPButtons(scene);
+        ButtonAction.initNPVButtons(scene);
+        ButtonAction.initDEPButtons(scene);
+        ButtonAction.initMenu(scene);
+
+        SetData.clearDepreciation(scene);
+        SetData.clearNetPresentValue(scene);
+        SetData.clearPayBackPeriod(scene);
+
+
+        LineChart<String,Number> chart = (LineChart<String,Number>) scene.lookup(CNodeID.CHART_PBP_CUMULATIVE_CASH_FLOW);
+        //Scene graph = new Scene(chart.getParent());
+        LineChart newChart = new LineChart(chart.getXAxis(),chart.getYAxis(),chart.getData());
+        Scene graph = new Scene(newChart);
+        saveAsPng(graph, "graph.png");
     }
 
-    public static void calculate(Scene scene){
-        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<RowPBP> rows = table.getItems();
-        int size = rows.size();
-
-        for (int i=0; i<size; i++){
-            RowPBP row = rows.get(i);
-            float inflow = Float.parseFloat(row.getInflow().getText());
-            float outflow = Float.parseFloat(row.getOutflow().getText());
-            row.setCumulativeCashFlow(""+(inflow-outflow));
+    public void saveAsPng(Scene scene, String path) {
+        System.out.println("Trying to snapshot");
+        WritableImage image = scene.snapshot(null);
+        File file = new File(path);
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-    }
-
-    public static void clear(Scene scene){
-        SetData setData = new SetData();
-        TableView<RowPBP> table = (TableView<RowPBP>) scene.lookup(CNodeID.TABLE_PBP_CASHFLOW);
-        ObservableList<RowPBP> rows = table.getItems();
-        rows.clear();
-        setData.setPayBackPeriod(scene,"0","0","0");
+        while (image.getProgress() != 1){
+            System.out.println(image.getProgress());
+        }
     }
 
     public static void main(String[] args)

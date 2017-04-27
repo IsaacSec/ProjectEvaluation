@@ -46,4 +46,22 @@ public class CResource {
                     "1 to 6 months","6 to 12 months","1 to 2 years","2 to 4 years",
                     "4 to 8 years","8 to 16 years","more than 16 years"
             };
+
+    public static final Float[] weightingA =
+            {
+                    25.0f,25.0f,25.0f,25.0f
+            };
+
+    public static final Float[] weightingB =
+            {
+                    10.0f,10.0f,10.0f,10.0f,
+                    10.0f,10.0f,10.0f,10.0f,
+                    10.0f,10.0f
+            };
+
+    public static final Float[] weightingC =
+            {
+                    20.0f,10.0f,10.0f,10.0f,
+                    10.0f,10.0f,20.0f,10.0f
+            };
 }
