@@ -19,38 +19,51 @@ import java.io.IOException;
  */
 public class ImageGenerator {
 
-    public static void generateSceneCharts(Scene scene, String path){
+    public static void generateSceneCharts(Scene scene){
         // Create directory
-        File file = new File(path);
-        file.mkdir();
-
-        generatePBPChartImages(scene, path);
-        generateNPVChartImages(scene, path);
-        generateDEPChartImages(scene, path);
+        generatePBPChartImages(scene);
+        generateNPVChartImages(scene);
+        generateDEPChartImages(scene);
     }
 
-    public static void generatePBPChartImages(Scene scene, String path){
+    public static void generatePBPChartImages(Scene scene){
         LineChart ccf = (LineChart) scene.lookup(CNodeID.CHART_PBP_CUMULATIVE_CASH_FLOW);
         BarChart ncf = (BarChart) scene.lookup(CNodeID.CHART_PBP_NET_CASH_FLOW);
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_PROJECT_NAME);
+        String path = projectName.getText()+"/";
+
+        File file = new File(path);
+        file.mkdir();
 
         generatePngFromLineChart(scene, ccf, path, "PBP-CCF");
         generatePngFromBarChart(scene, ncf, path, "PBP-NCF");
     }
 
-    public static void generateNPVChartImages(Scene scene, String path){
+    public static void generateNPVChartImages(Scene scene){
         LineChart ccf = (LineChart) scene.lookup(CNodeID.CHART_NPV_CUMULATIVE_CASH_FLOW);
         BarChart ncf = (BarChart) scene.lookup(CNodeID.CHART_NPV_NET_CASH_FLOW);
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_PROJECT_NAME);
+        String path = projectName.getText()+"/";
+
+        File file = new File(path);
+        file.mkdir();
 
         generatePngFromLineChart(scene, ccf, path, "NPV-CCF");
         generatePngFromBarChart(scene, ncf, path, "NPV-NCF");
     }
 
-    public static void generateDEPChartImages(Scene scene, String path){
+    public static void generateDEPChartImages(Scene scene){
         LineChart dr = (LineChart) scene.lookup(CNodeID.CHART_DEP_DEPRECIATION_RATE);
         LineChart ad = (LineChart) scene.lookup(CNodeID.CHART_DEP_ANNUAL_DEPRECIATION);
         LineChart acd = (LineChart) scene.lookup(CNodeID.CHART_DEP_ACCUMULATED_DEPRECIATION);
         AreaChart lv = (AreaChart) scene.lookup(CNodeID.CHART_DEP_LEDGER_VALUES);
         LineChart ty = (LineChart) scene.lookup(CNodeID.CHART_DEP_TAX_YEAR);
+
+        TextField projectName = (TextField) scene.lookup(CNodeID.TEXTFIELD_PROJECT_NAME);
+        String path = projectName.getText()+"/";
+
+        File file = new File(path);
+        file.mkdir();
 
         generatePngFromLineChart(scene, dr, path, "DEP_DR");
         generatePngFromLineChart(scene, ad, path, "DEP_AD");
@@ -64,6 +77,7 @@ public class ImageGenerator {
         LineChart newChart = new LineChart(chart.getXAxis(), chart.getYAxis(), chart.getData());
         Scene graph = new Scene(newChart);
         String pname = projectName.getText();
+        //System.out.println(path);
         generatePng(graph, path + pname+"_"+identifier+".png");
     }
 
@@ -72,6 +86,7 @@ public class ImageGenerator {
         BarChart newChart = new BarChart(chart.getXAxis(), chart.getYAxis(), chart.getData());
         Scene graph = new Scene(newChart);
         String pname = projectName.getText();
+        //System.out.println(path + pname+"_"+identifier+".png");
         generatePng(graph, path + pname+"_"+identifier+".png");
     }
 

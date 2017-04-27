@@ -30,7 +30,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar fx:id="MenuBar">
         <menus>
@@ -102,7 +102,7 @@
                                           <TextField fx:id="PBPInterestRate" layoutX="153.0" layoutY="153.0" prefHeight="26.0" prefWidth="103.0" />
                                           <Button fx:id="PBPCalculate" layoutX="46.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
                                           <Button fx:id="PBPClear" layoutX="165.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                          <Button fx:id="PBPGenerateReport" layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Generate Report" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -195,7 +195,7 @@
                                           <TextField fx:id="NPVPeriodSV" layoutX="153.0" layoutY="302.0" prefHeight="26.0" prefWidth="104.0" />
                                           <Button fx:id="NPVCalculate" layoutX="48.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Calculate" />
                                           <Button fx:id="NPVClear" layoutX="167.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                          <Button fx:id="NPVGenerateReport" layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Generate Report" />
                                           <Label layoutX="48.0" layoutY="250.0" text="Salvage Value">
                                              <font>
                                                 <Font size="15.0" />
@@ -314,7 +314,7 @@
                                           <TextField fx:id="DEPStartingYear" layoutX="153.0" layoutY="313.0" prefHeight="26.0" prefWidth="103.0" />
                                           <Button fx:id="DEPMACRS" layoutX="48.0" layoutY="504.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="102.0" text="MACRS" />
                                           <Button fx:id="DEPClear" layoutX="167.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Clear" />
-                                          <Button layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Show Instructions" />
+                                          <Button fx:id="DEPGenerateReport" layoutX="51.0" layoutY="569.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="202.0" text="Generate Report" />
                                           <Label layoutX="49.0" layoutY="165.0" prefHeight="47.0" prefWidth="74.0" text="Salvage Value" wrapText="true">
                                              <font>
                                                 <Font size="15.0" />

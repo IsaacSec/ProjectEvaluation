@@ -17,6 +17,7 @@ public class CNodeID {
     public static final String TEXTFIELD_PBP_INTEREST_RATE = "#PBPInterestRate";
     public static final String BUTTON_PBP_CALCULATE = "#PBPCalculate";
     public static final String BUTTON_PBP_CLEAR = "#PBPClear";
+    public static final String BUTTON_PBP_GENERATE_REPORT = "#PBPGenerateReport";
     public static final String TABLE_PBP_CASHFLOW = "#PBPCashFlowTable";
     public static final String CHART_PBP_NET_CASH_FLOW = "#PBPChartNetCashFlow";
     public static final String CHART_PBP_CUMULATIVE_CASH_FLOW = "#PBPChartCumulativeCashFlow";
@@ -30,6 +31,7 @@ public class CNodeID {
     public static final String TEXTFIELD_NPV_TAX_RATE = "#NPVTaxRate";
     public static final String BUTTON_NPV_CALCULATE = "#NPVCalculate";
     public static final String BUTTON_NPV_CLEAR = "#NPVClear";
+    public static final String BUTTON_NPV_GENERATE_REPORT = "#NPVGenerateReport";
     public static final String TABLE_NPV = "#NPVTable";
     public static final String CHART_NPV_NET_CASH_FLOW = "#NPVChartNetCashFlow";
     public static final String CHART_NPV_CUMULATIVE_CASH_FLOW = "#NPVChartCumulativeCashFlow";
@@ -44,6 +46,7 @@ public class CNodeID {
     public static final String BUTTON_DEP_STRAIGHT_LINE = "#DEPStraightLine";
     public static final String BUTTON_DEP_MACRS = "#DEPMACRS";
     public static final String BUTTON_DEP_CLEAR = "#DEPClear";
+    public static final String BUTTON_DEP_GENERATE_REPORT = "#DEPGenerateReport";
     public static final String TABLE_DEP = "#DEPTable";
     public static final String CHART_DEP_DEPRECIATION_RATE = "#DEPChartDepreciationRate";
     public static final String CHART_DEP_ANNUAL_DEPRECIATION = "#DEPChartAnnualDepreciation";

@@ -4,13 +4,11 @@ import classes.config.CNodeID;
 import classes.screening.*;
 import javafx.scene.Scene;
 import javafx.scene.chart.Chart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 
 import static classes.control.SetData.*;
 import static classes.control.GetData.*;
+import static classes.utils.PDFGenerator.*;
 
 public class ButtonAction {
 
@@ -18,9 +16,11 @@ public class ButtonAction {
     {
         Button calculate = (Button) scene.lookup(CNodeID.BUTTON_PBP_CALCULATE);
         Button clear = (Button) scene.lookup(CNodeID.BUTTON_PBP_CLEAR);
+        Button report = (Button) scene.lookup(CNodeID.BUTTON_PBP_GENERATE_REPORT);
 
         calculate.setOnAction(e -> calculatePBP(scene));
         clear.setOnAction(e -> clearPBP(scene));
+        report.setOnAction(e -> generatePBPReport(scene));
     }
 
     public static void calculatePBP(Scene scene)

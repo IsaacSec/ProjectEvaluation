@@ -10,12 +10,11 @@ import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 
 public class TableAction {
 
@@ -36,6 +35,33 @@ public class TableAction {
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayPBPRows(scene, table));
+
+        cumulative.setCellFactory(new Callback<TableColumn<RowPBP,String>, TableCell<RowPBP,String>>() {
+            @Override
+            public TableCell<RowPBP,String> call(TableColumn<RowPBP,String> param)  {
+                TableCell<RowPBP,String> cell = new TableCell<RowPBP,String>(){
+                    @Override
+                    public void updateItem(String item, boolean empty){
+                        if(item != null){
+                            try {
+                                float value = Float.parseFloat(item);
+                                if(value >= 0){
+                                    this.setStyle("-fx-background-color: cadetblue");
+                                }else{
+                                    this.setStyle("-fx-background-color: coral");
+                                }
+                            }catch (NumberFormatException nfe){
+
+                            }
+                            Label label = new Label(item);
+                            setGraphic(label);
+                        }
+                    }
+                };
+
+                return cell;
+            }
+        });
     }
 
     public static void displayPBPRows(Scene scene, TableView<RowPBP> table){

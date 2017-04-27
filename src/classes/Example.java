@@ -61,7 +61,7 @@ public class Example extends Application{
         SetData.clearNetPresentValue(scene);
         SetData.clearPayBackPeriod(scene);
 
-        ImageGenerator.generateSceneCharts(scene, "test/");
+        ImageGenerator.generateSceneCharts(scene);
     }
 
     public void saveAsPng(Scene scene, String path) {
