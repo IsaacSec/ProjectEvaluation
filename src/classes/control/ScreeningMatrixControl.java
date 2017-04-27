@@ -189,9 +189,14 @@ public class ScreeningMatrixControl {
     }
 
     private void calculateTotals(){
-        calculateTotal(weightingA, weightedValueA, totalA, weightedTotalA);
-        calculateTotal(weightingB, weightedValueB, totalB, weightedTotalB);
-        calculateTotal(weightingC, weightedValueC, totalC, weightedTotalC);
+
+        if(Integer.parseInt(getWeightingTotalA().getText())+Integer.parseInt(getWeightingTotalB().getText())+Integer.parseInt(getWeightingTotalC().getText())== 100) {
+            calculateTotal(weightingA, weightedValueA, totalA, weightedTotalA);
+            calculateTotal(weightingB, weightedValueB, totalB, weightedTotalB);
+            calculateTotal(weightingC, weightedValueC, totalC, weightedTotalC);
+        }else{
+            GetData.displayError("Error",null,"The sum of the weights has to be 100");
+        }
     }
 
     private void calculateTotal(Vector<Label> weightings, Vector<Label> values, Label totalW, Label totalWV){
@@ -520,7 +525,7 @@ public class ScreeningMatrixControl {
             value += getRatingC().get(i).getValue()+" ";
         }
         value += getWeightingTotalA().getText()+" "+getWeightingTotalB().getText()+" "+ getWeightingTotalC().getText();
-        value += getDecisionNo().getText()+" "+getDecisionCanConsider().getText()+" "+getDecisionYes().getText();
+        value += " "+getDecisionNo().getText()+" "+getDecisionCanConsider().getText()+" "+getDecisionYes().getText();
         return value;
     }
     public static void setMatrixString(String str){
