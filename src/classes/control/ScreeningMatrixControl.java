@@ -1,6 +1,7 @@
 package classes.control;
 
 import classes.config.CNodeID;
+import classes.config.CResource;
 import com.sun.jndi.cosnaming.CNCtx;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -79,6 +80,8 @@ public class ScreeningMatrixControl {
         decisionYes = (TextField) scene.lookup(CNodeID.TEXTFIELD_DECISION_YES);
         decision = (Label) scene.lookup(CNodeID.LABEL_DECISION);
 
+        analyse = (Button) scene.lookup(CNodeID.BUTTON_ANALYSE);
+
         ratingA = new Vector<>();
         weightingA = new Vector<>();
         weightedValueA = new Vector<>();
@@ -125,13 +128,137 @@ public class ScreeningMatrixControl {
     public void initComboBoxes(){
         for (int i = 0; i < ratingA.size(); i++) {
             ratingA.get(i).getItems().addAll("Low","Medium","High");
+            int index = i;
+            ratingA.get(i).setOnAction(event -> displayWeightValues(index, ratingA, weightingA, weightedValueA));
         }
         for (int i = 0; i < ratingB.size(); i++) {
             ratingB.get(i).getItems().addAll("Low","Medium","High");
+            int index = i;
+            ratingB.get(i).setOnAction(event -> displayWeightValues(index, ratingB, weightingB, weightedValueB));
         }
         for (int i = 0; i < ratingC.size(); i++) {
             ratingC.get(i).getItems().addAll("Low","Medium","High");
+            int index = i;
+            ratingC.get(i).setOnAction(event -> displayWeightValues(index, ratingC, weightingC, weightedValueC));
         }
+    }
+
+    public void initWeighting(){
+        for (int i = 0; i < weightingA.size(); i++) {
+            weightingA.get(i).setText(""+CResource.weightingA[i]);
+        }
+        for (int i = 0; i < weightingB.size(); i++) {
+            weightingB.get(i).setText(""+CResource.weightingB[i]);
+        }
+        for (int i = 0; i < weightingC.size(); i++) {
+            weightingC.get(i).setText(""+CResource.weightingC[i]);
+        }
+    }
+
+    private void displayWeightValues(int index, Vector<ComboBox>ratings, Vector<Label> weightings, Vector<Label> values){
+        String rating = (String) ratings.get(index).getValue();
+        String weighting = weightings.get(index).getText();
+        float value;
+
+        switch (rating){
+            case "Low":
+                value = 1;
+                break;
+            case "Medium":
+                value = 3;
+                break;
+            case "High":
+                value = 5;
+                break;
+            default:
+                value = 0;
+        }
+
+        value = (value * Float.parseFloat(weighting))/5;
+        values.get(index).setText(""+value);
+    }
+
+    public void initButton(){
+        analyse.setOnAction(event -> analyse());
+    }
+
+    private void analyse(){
+        calculateTotals();
+        calculateSubTotals();
+        takeDecision();
+    }
+
+    private void calculateTotals(){
+        calculateTotal(weightingA, weightedValueA, totalA, weightedTotalA);
+        calculateTotal(weightingB, weightedValueB, totalB, weightedTotalB);
+        calculateTotal(weightingC, weightedValueC, totalC, weightedTotalC);
+    }
+
+    private void calculateTotal(Vector<Label> weightings, Vector<Label> values, Label totalW, Label totalWV){
+        float totalWeightedValue = 0;
+        float totalWeighting = 0;
+
+        int size = weightings.size();
+        for (int i = 0; i < size; i++) {
+            float weighting = Float.parseFloat(weightings.get(i).getText());
+            float value = Float.parseFloat(values.get(i).getText());
+            totalWeighting += weighting;
+            totalWeightedValue += value;
+        }
+
+        totalW.setText(""+totalWeighting);
+        totalWV.setText(""+totalWeightedValue);
+    }
+
+    private void calculateSubTotals(){
+        calculateSubTotal(weightingTotalA, totalA, weightedTotalA, subtotalWeightingA, subtotalWeightedValueA);
+        calculateSubTotal(weightingTotalB, totalB, weightedTotalB, subtotalWeightingB, subtotalWeightedValueB);
+        calculateSubTotal(weightingTotalC, totalC, weightedTotalC, subtotalWeightingC, subtotalWeightedValueC);
+
+        float wA = Float.parseFloat(weightingTotalA.getText());
+        float wB = Float.parseFloat(weightingTotalB.getText());
+        float wC = Float.parseFloat(weightingTotalC.getText());
+        float gtWeighting = wA + wB + wC;
+        float wvA = Float.parseFloat(weightedTotalA.getText());
+        float wvB = Float.parseFloat(weightedTotalB.getText());
+        float wvC = Float.parseFloat(weightedTotalC.getText());
+
+        float weightedA = wvA * (wA/gtWeighting);
+        float weightedB = wvB * (wB/gtWeighting);
+        float weightedC = wvC * (wC/gtWeighting);
+        float gtWeighted = weightedA + weightedB + weightedC;
+
+        subtotalGrandTotalWeighting.setText(""+gtWeighting);
+        subtotalGrandTotalWeightedValue.setText(""+gtWeighted);
+    }
+
+    private void calculateSubTotal(TextField partialWeighting, Label partialTotal, Label weightedTotal, Label subtotalWeighting, Label subtotalWeighted){
+        float proportion = Float.parseFloat(weightedTotal.getText()) / Float.parseFloat(partialTotal.getText());
+        float weighting = Float.parseFloat(partialWeighting.getText());
+        float weighted = proportion * weighting;
+        subtotalWeighting.setText(""+weighting);
+        subtotalWeighted.setText(""+weighted);
+    }
+
+    private void takeDecision(){
+        float limitNo = Float.parseFloat(decisionNo.getText());
+        float limitCanConsider = Float.parseFloat(decisionCanConsider.getText());
+        float limitYes = Float.parseFloat(decisionYes.getText());
+        float finalWeight = Float.parseFloat(subtotalGrandTotalWeightedValue.getText());
+        String decisionResult;
+
+        if (finalWeight > limitNo && finalWeight <= limitCanConsider){
+            //NO
+            decisionResult = "NO";
+        } else if (finalWeight > limitCanConsider && finalWeight <= limitYes){
+            //Can Consider
+            decisionResult = "CAN CONSIDER";
+        } else {
+            //Yes
+            decisionResult = "YES";
+        }
+
+        decision.setText(decisionResult);
     }
 
     public TextField getWeightingTotalA() {

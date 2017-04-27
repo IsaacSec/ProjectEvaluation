@@ -30,7 +30,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar fx:id="MenuBar">
         <menus>
@@ -851,7 +851,7 @@
                                                 <Insets left="10.0" />
                                              </padding>
                                           </Label>
-                                          <TextField GridPane.columnIndex="1" />
+                                          <TextField fx:id="MatrixBWeighting" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                     <Label layoutX="60.0" layoutY="646.0" text="C.  OTHER CONSIDERATIONS">
@@ -1063,7 +1063,7 @@
                                                 <Insets left="10.0" />
                                              </padding>
                                           </Label>
-                                          <TextField GridPane.columnIndex="1" />
+                                          <TextField fx:id="MatrixCWeighting" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                     <Label layoutX="60.0" layoutY="962.0" text="SUB TOTALS">

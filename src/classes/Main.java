@@ -49,6 +49,8 @@ public class Main extends Application {
 
         ScreeningMatrixControl screeningMatrix = new ScreeningMatrixControl(scene);
         screeningMatrix.initComboBoxes();
+        screeningMatrix.initWeighting();
+        screeningMatrix.initButton();
     }
 
     public static void main(String[] args)
