@@ -2,16 +2,18 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.screening.DEPResult;
+import classes.tablemodel.RowChecklist;
 import classes.tablemodel.RowDEP;
 import classes.tablemodel.RowNPV;
 import classes.tablemodel.RowPBP;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Created by erikm on 18/04/2017.
@@ -257,5 +259,47 @@ public class SetData {
 
         projectName.setText(nameString);
         evaluatorName.setText(evaluationString);
+    }
+
+    public static void setCheckList(Scene scene, String str1,String str2,String str3,String str4,String str5,String str6,String str7,String str8,String str9,String str10, String str11,String str12,String str13,String str14,String str15,String str16, String str17) {
+        TableView<RowChecklist> table = (TableView<RowChecklist>) scene.lookup(CNodeID.TABLE_CHECKLIST);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(str9, formatter);
+        ObservableList<RowChecklist> rows = table.getItems();
+        TextField text1 = (TextField) rows.get(0).getAnswer();
+        ComboBox<String> choice1 = (ComboBox<String>) rows.get(1).getAnswer();
+        ComboBox<String> choice2 = (ComboBox<String>) rows.get(2).getAnswer();
+        TextField text2 = (TextField) rows.get(3).getAnswer();
+        TextField text3 = (TextField) rows.get(4).getAnswer();
+        TextField text4 = (TextField) rows.get(5).getAnswer();
+        TextField text5 = (TextField) rows.get(6).getAnswer();
+        TextField text6 = (TextField) rows.get(7).getAnswer();
+        DatePicker datePicker = (DatePicker) rows.get(8).getAnswer();
+        TextArea textArea = (TextArea) rows.get(9).getAnswer();
+        ComboBox<String> choice3 = (ComboBox<String>) rows.get(10).getAnswer();
+        ComboBox<String> choice4 = (ComboBox<String>) rows.get(11).getAnswer();
+        ComboBox<String> choice5 = (ComboBox<String>) rows.get(12).getAnswer();
+        ComboBox<String> choice6 = (ComboBox<String>) rows.get(13).getAnswer();
+        ComboBox<String> choice7 = (ComboBox<String>) rows.get(14).getAnswer();
+        ComboBox<String> choice8 = (ComboBox<String>) rows.get(15).getAnswer();
+        ComboBox<String> choice9 = (ComboBox<String>) rows.get(16).getAnswer();
+
+        text1.setText(str1);
+        choice1.setValue(str2);
+        choice2.setValue(str3);
+        text2.setText(str4);
+        text3.setText(str5);
+        text4.setText(str6);
+        text5.setText(str7);
+        text6.setText(str8);
+        datePicker.setValue(localDate);
+        textArea.setText(str10);
+        choice3.setValue(str11);
+        choice4.setValue(str12);
+        choice5.setValue(str13);
+        choice6.setValue(str14);
+        choice7.setValue(str15);
+        choice8.setValue(str16);
+        choice9.setValue(str17);
     }
 }

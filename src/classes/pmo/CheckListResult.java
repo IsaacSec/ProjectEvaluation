@@ -179,6 +179,6 @@ public class CheckListResult {
     }
 
     public String toString(){
-        return this.getS1()+"*"+this.getS2()+"*"+this.getS3()+"*"+this.getS4()+"*"+this.getS5()+"*"+this.getS6()+"*"+this.getS7()+"*"+this.getS8()+"*"+this.getS9()+"*"+this.getS10()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1()+"*"+this.getS1();
+        return this.getS1()+"*"+this.getS2()+"*"+this.getS3()+"*"+this.getS4()+"*"+this.getS5()+"*"+this.getS6()+"*"+this.getS7()+"*"+this.getS8()+"*"+this.getS9()+"*"+this.getS10()+"*"+this.getS11()+"*"+this.getS12()+"*"+this.getS13()+"*"+this.getS14()+"*"+this.getS15()+"*"+this.getS16()+"*"+this.getS17();
     }
 }

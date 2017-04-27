@@ -40,7 +40,10 @@ public class Load {
             StringTokenizer str3 = new StringTokenizer(bf.readLine()," ");
             SetData.setDepreciation(scene, str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken(),str3.nextToken()+" "+str3.nextToken(),str3.nextToken());
             TableAction.displayDEPRows(scene,tableDep);
+            StringTokenizer str4 = new StringTokenizer(bf.readLine(),"*");
+            SetData.setCheckList(scene,str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken(),str4.nextToken());
 
+            bf.close();
             ButtonAction.calculateNPV(scene);
             ButtonAction.calculatePBP(scene);
             GetData.displayAlert("Load successful",null,"The project "+projectName+" was successfully loaded");
