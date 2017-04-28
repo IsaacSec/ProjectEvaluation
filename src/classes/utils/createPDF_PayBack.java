@@ -98,7 +98,9 @@ class createPDF_PayBack {
         document.add(paragraph_5);
         document.add(paragraph_3);
         document.add(paragraph_6);
+        Image image2 = Image.getInstance(project+"/"+project+"_PBP_NCF.png");
         document.add(image1);
+        document.add(image2);
         document.add(paragraph_2);
         document.close();
         return null;

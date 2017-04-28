@@ -102,6 +102,8 @@ class createPDF_NetPresent {
         document.add(paragraph_3);
         document.add(paragraph_6);
         document.add(image1);
+        Image image2 = Image.getInstance(project+"/"+project+"_NPV_NCF.png");
+        document.add(image2);
         document.add(paragraph_2);
         document.close();
         return null;

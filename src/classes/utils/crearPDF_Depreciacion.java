@@ -104,6 +104,14 @@ class crearPDF_Depreciacion {
         document.add(paragraph_5);
         document.add(paragraph_3);
         document.add(paragraph_6);
+        Image image2 = Image.getInstance(project+"/"+project+"_DEP_DR.png");
+        Image image3 = Image.getInstance(project+"/"+project+"_DEP_AD.png");
+        Image image4 = Image.getInstance(project+"/"+project+"_DEP_ACD.png");
+        Image image5 = Image.getInstance(project+"/"+project+"_DEP_LV.png");
+        document.add(image2);
+        document.add(image3);
+        document.add(image4);
+        document.add(image5);
         document.add(image1);
         document.add(paragraph_2);
         document.close();

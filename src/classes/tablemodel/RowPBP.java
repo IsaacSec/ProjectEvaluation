@@ -69,4 +69,8 @@ public final class RowPBP {
     public void setCumulativeCashFlow(String cumulativeCashFlow) {
         this.cumulativeCashFlow.set(cumulativeCashFlow);
     }
+
+    public String getAllDataInRow(){
+        return period.getValue()+" "+inflow.getText()+" "+outflow.getText()+" "+cumulativeCashFlow.getValue();
+    }
 }

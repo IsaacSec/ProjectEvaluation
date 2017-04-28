@@ -55,6 +55,7 @@ public class CNodeID {
     public static final String CHART_DEP_TAX_YEAR = "#DEPChartTaxPerYear";
 
     public static final String TABLE_CHECKLIST = "#ChecklistTable";
+    public static final String BUTTON_CHECKLIST_GENERATE_REPORT = "#CheckListGenerateReport";
 
     public static final String COMBO_BOX_RATING_A[] =
             {

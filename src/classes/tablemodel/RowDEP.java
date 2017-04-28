@@ -113,4 +113,8 @@ public class RowDEP {
         this.taxPerYear.set(taxPerYear);
     }
 
+    public String getAllDataInRow(){
+        return period.getValue()+" "+years.getValue()+" "+depreciationRate.getValue()+" "+annualDepreciation.getValue()
+                +" "+accumulativeDepreciation.getValue()+" "+valueLedgers.getValue()+" "+taxPerYear.getValue();
+    }
 }

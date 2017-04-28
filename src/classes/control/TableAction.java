@@ -35,7 +35,7 @@ public class TableAction {
 
         TextField tf = (TextField) scene.lookup(CNodeID.TEXTFIELD_PBP_PERIODS);
         tf.addEventHandler(KeyEvent.KEY_RELEASED, event -> displayPBPRows(scene, table));
-
+        /*
         cumulative.setCellFactory(new Callback<TableColumn<RowPBP,String>, TableCell<RowPBP,String>>() {
             @Override
             public TableCell<RowPBP,String> call(TableColumn<RowPBP,String> param)  {
@@ -62,6 +62,7 @@ public class TableAction {
                 return cell;
             }
         });
+        */
     }
 
     public static void displayPBPRows(Scene scene, TableView<RowPBP> table){

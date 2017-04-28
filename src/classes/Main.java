@@ -41,6 +41,7 @@ public class Main extends Application {
         ButtonAction.initPBPButtons(scene);
         ButtonAction.initNPVButtons(scene);
         ButtonAction.initDEPButtons(scene);
+        ButtonAction.initChecklistButton(scene);
         ButtonAction.initMenu(scene);
 
         SetData.clearDepreciation(scene);

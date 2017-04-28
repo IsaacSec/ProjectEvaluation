@@ -2,6 +2,7 @@ package classes.control;
 
 import classes.config.CNodeID;
 import classes.screening.*;
+import classes.utils.ReportGenerator;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 
@@ -107,6 +108,11 @@ public class ButtonAction {
     private static void clearDEP(Scene scene)
     {
         clearDepreciation(scene);
+    }
+
+    public static void initChecklistButton(Scene scene){
+        Button generateReport = (Button) scene.lookup(CNodeID.BUTTON_CHECKLIST_GENERATE_REPORT);
+        generateReport.setOnAction(e -> ReportGenerator.generateChecklistReport(scene));
     }
 
     public static void initMenu(Scene scene){

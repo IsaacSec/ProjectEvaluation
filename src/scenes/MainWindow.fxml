@@ -443,7 +443,7 @@
                      <content>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1183.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="557.0" prefWidth="1183.0">
                                  <children>
                                     <TableView fx:id="ChecklistTable" editable="true" layoutX="56.0" layoutY="44.0" prefHeight="442.0" prefWidth="1091.0">
                                       <columns>
@@ -452,6 +452,7 @@
                                           <TableColumn minWidth="0.0" prefWidth="420.0" text="Answer" />
                                       </columns>
                                     </TableView>
+                                    <Button fx:id="CheckListGenerateReport" layoutX="56.0" layoutY="515.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="208.0" text="Generate Report" />
                                  </children>
                               </AnchorPane>
                           </content>

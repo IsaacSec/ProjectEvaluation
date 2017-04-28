@@ -83,4 +83,8 @@ public class RowNPV {
     public void setCumulativeCashFlow(String cumulativeCashFlow) {
         this.cumulativeCashFlow.set(cumulativeCashFlow);
     }
+
+    public String getAllDataInRow(){
+        return period.getValue()+" "+inflow.getText()+" "+outflow.getText()+" "+netCashFlow.getValue()+" "+cumulativeCashFlow.getValue();
+    }
 }
