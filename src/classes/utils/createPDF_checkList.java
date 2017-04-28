@@ -62,11 +62,11 @@ class createPDF_checkList {
         paragraph.add("\n\n\nCHECK LIST");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
 
-        Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
+        //Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
 
-        image.scaleToFit(150, 150);
+        //image.scaleToFit(150, 150);
 
-        image.setAlignment(Chunk.ALIGN_RIGHT);
+        //image.setAlignment(Chunk.ALIGN_RIGHT);
 
         Paragraph paragraph_2 = new Paragraph();
         paragraph_2.setFont(new Font(FontFactory.getFont("Courier", 12, Font.BOLD, BaseColor.BLUE)));
@@ -100,7 +100,7 @@ class createPDF_checkList {
         paragraph_4.setAlignment(Paragraph.ALIGN_LEFT);
 
         document.open();
-        document.add(image);
+        //document.add(image);
 
         document.add(paragraph);
 

@@ -53,15 +53,15 @@ class createPDF_NetPresent {
         paragraph.add("\n\n\nNET PRESENT VALUE");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
         
-        Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
+        //Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
         
-        image.scaleToFit(150, 150);
+        //image.scaleToFit(150, 150);
         
         Image image1 = Image.getInstance(project+"/"+project+"_NPV_CCF.png");
         
         image1.scaleToFit(300, 300);
         
-        image.setAlignment(Chunk.ALIGN_RIGHT);
+        //image.setAlignment(Chunk.ALIGN_RIGHT);
         image1.setAlignment(Chunk.ALIGN_CENTER);
         
         Paragraph paragraph_2 = new Paragraph();
@@ -92,7 +92,7 @@ class createPDF_NetPresent {
         
         
         document.open();
-        document.add(image);
+        //document.add(image);
       
         document.add(paragraph);
         

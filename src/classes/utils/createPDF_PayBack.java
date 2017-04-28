@@ -52,15 +52,15 @@ class createPDF_PayBack {
         paragraph.add("\n\n\nPAYBACK PERIOD");
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
         // TODO: Change absolute to relative
-         Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
+        //Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
         
-        image.scaleToFit(150, 150);
+        //image.scaleToFit(150, 150);
         
         Image image1 = Image.getInstance(project+"/"+project+"_PBP_CCF.png");
         
         image1.scaleToFit(300, 300);
         
-        image.setAlignment(Chunk.ALIGN_RIGHT);
+        //image.setAlignment(Chunk.ALIGN_RIGHT);
         image1.setAlignment(Chunk.ALIGN_CENTER);
         
         Paragraph paragraph_2 = new Paragraph();
@@ -89,7 +89,7 @@ class createPDF_PayBack {
         paragraph_6.setAlignment(Paragraph.ALIGN_CENTER);
         
         document.open();
-        document.add(image);
+        //document.add(image);
       
         document.add(paragraph);
         

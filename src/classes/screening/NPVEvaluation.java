@@ -39,9 +39,14 @@ public class NPVEvaluation {
     int i = 0;
 
     for(float net : netcash){
-      Double divisor = Math.pow(1+interest,i);
-      float result = (net*(1-tax))/divisor.floatValue();
-      answer.add(result);
+      if (i==0){
+        float result = net + net*(tax);
+        answer.add(result);
+      }else{
+        Double divisor = Math.pow(1+interest,i);
+        float result = (net*(1-tax))/divisor.floatValue();
+        answer.add(result);
+      }
       i++;
     }
     return answer;

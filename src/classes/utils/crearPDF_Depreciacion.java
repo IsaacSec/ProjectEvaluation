@@ -57,15 +57,15 @@ class crearPDF_Depreciacion {
         paragraph.setAlignment(Paragraph.ALIGN_CENTER);
 
         //System.out.println(getClass().getResource("images/logo_report.png"));
-        Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
+        //Image image = Image.getInstance("/home/isaac/IdeaProjects/ProjectEvaluation/src/images/logo_report.png");
         
-        image.scaleToFit(150, 150);
+        //image.scaleToFit(150, 150);
         
         Image image1 = Image.getInstance(project+"/"+project+"_DEP_TY.png");
         
         image1.scaleToFit(300, 300);
         
-        image.setAlignment(Chunk.ALIGN_RIGHT);
+        //image.setAlignment(Chunk.ALIGN_RIGHT);
         image1.setAlignment(Chunk.ALIGN_CENTER);
         
         Paragraph paragraph_2 = new Paragraph();
@@ -95,7 +95,7 @@ class crearPDF_Depreciacion {
         
         
         document.open();
-        document.add(image);
+        //document.add(image);
       
         document.add(paragraph);
         
